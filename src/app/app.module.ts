@@ -15,7 +15,11 @@ import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
-
+import { ManageBooksComponent } from './admin/components/manage-books/manage-books.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ManageCategoriesComponent } from './admin/components/manage-categories/manage-categories.component';
+import { ManageDiscountsComponent } from './admin/components/manage-discounts/manage-discounts.component';
+import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component'
 
 
 @NgModule({
@@ -33,12 +37,17 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
     CheckoutComponent,
     ConfirmationComponent,
     WishlistComponent,
+    ManageBooksComponent,
+    ManageCategoriesComponent,
+    ManageDiscountsComponent,
+    ManageUsersComponent,
     
  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
