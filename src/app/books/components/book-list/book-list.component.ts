@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { BooksService } from '../../services/books.service';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class BookListComponent implements OnInit {
-
-  constructor() { }
+  bookList: any[] = [];
+  constructor(private bookService: BooksService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('p_catID');
+    
+    this.bookService.getBooksByCatId(id)
+      .subscribe( (res: any) => {
+        console.log(res);
+        this.bookList = res;
+      });
   }
 
 }

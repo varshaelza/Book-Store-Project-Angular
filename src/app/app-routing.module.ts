@@ -13,8 +13,8 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'list-books',component:BookListComponent},
-  {path:'book-details',component:BookDetailsComponent},
+  {path:'list-books/:p_catID',component:BookListComponent},
+  {path:'book-details/:bookId',component:BookDetailsComponent},
   {path:'cart',component:CartComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'confirm',component:ConfirmationComponent},
