@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CategoryService } from '../services/category.service';
 export class HomeComponent implements OnInit {
   categoryList :any[]=[];
 
-  constructor(private catService: CategoryService){}//private userService: CategoryService , private route: ActivatedRoute) { }
+  constructor(private catService: CategoryService, private readonly router :Router){}//private userService: CategoryService , private route: ActivatedRoute) { }
   
   ngOnInit(): void {
     // let id = this.route.snapshot.paramMap.get('p_catID');
@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
       console.log(res);
       this.categoryList = res;
     });
+
+
   }
   
 
