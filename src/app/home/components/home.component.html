@@ -72,84 +72,15 @@
     <div  class="fs-1 text-center">
   <p style="font-style:italic;">Categories</p>
   </div>
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3 p-2 m-5">
-      <div class="col mb-5">
-        <div class="card shadow-sm">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3 p-2  m-5">      
+      <div class="col mb-5 ">
+        <div class="card shadow-sm" style="margin-bottom: 50px; border: solid; border-width: 3px;" *ngFor="let category of categoryList">
           <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{category.categoryImg}}" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-      
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="col mb-5">
-        <div class="card shadow-sm">
-          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="assets/images/loginbg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <div class="card-body text-center">
-            <h5 >Category name</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            
+            <h5 class="card-title" style="font-style: italic;font-weight: bolder;font-family: Georgia, 'Times New Roman', Times, serif;">{{category.categoryName}} </h5>
+            <p class="card-text" style="font-size: large;">{{category.categoryDesc}}</p> 
+            <button class="btn btn-primary" style="background-color: black; border-color: black;"><a style="text-decoration: none; color: aliceblue;" routerLink="/Category/?p_catID={{category.categoryId}}">View More</a></button>         
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -38,7 +39,8 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
