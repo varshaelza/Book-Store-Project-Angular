@@ -7,7 +7,7 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./manage-categories.component.scss']
 })
 export class ManageCategoriesComponent implements OnInit {
-
+  lastpos:any;
   categories:any;
   constructor(private adminService:AdminService) { }
 
@@ -17,6 +17,7 @@ export class ManageCategoriesComponent implements OnInit {
   .subscribe( (res:any) =>{
     console.log(res)
     this.categories=res;
+    this.lastpos=this.categories.at(-1).categoryPosition;
     
     
   })

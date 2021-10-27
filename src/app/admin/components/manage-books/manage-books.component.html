@@ -14,7 +14,8 @@
                 </div>
                 <div class="row border-top border-bottom" >
                     <div class="row main align-items-center">
-                        
+                        <div class="col"><div class="row  fw-bold">Book Position</div>
+                        </div>
                         <div class="col-2"><div class="row  fw-bold">  Book Image</div>
                         </div>
                         <div class="col">
@@ -34,6 +35,16 @@
 
                 <div class="row border-top border-bottom" *ngFor="let book of books">
                     <div class="row main align-items-center">
+                        <div class="col" id="positionchange">
+                            <div class="row " *ngIf='!(book.bookPosition==1)'><button class="btn btn-dark"  style="width:60px;">&uarr;</button></div>
+                            <div class="row fw-bold mt-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.bookPosition}}</div>
+                            
+                            
+                            <div class="row" *ngIf='!(book.bookPosition==lastpos)'><button class="btn btn-dark"  style="width:60px;">&darr;</button></div>
+                            
+                            
+                        
+                        </div>
                         
                         <div class="col-2"><img class="img-fluid " style="width:150px"
                                 src={{book.bookImage}}>

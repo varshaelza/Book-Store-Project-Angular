@@ -157,6 +157,10 @@ input:focus::-webkit-input-placeholder {
     transition: none
 }
 
+.btn:active{
+    box-shadow:0 5px grey;
+    transform:translateY(4px);
+}
 .btn:hover {
     background-color: #444444;
 }

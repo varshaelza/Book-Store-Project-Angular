@@ -12,9 +12,37 @@
                                 ADD</button></div>
                     </div>
                 </div>
+                <div class="row border-top border-bottom" >
+                    <div class="row main align-items-center">
+                        <div class="col"><div class="row  fw-bold">Category Position</div>
+                        </div>
+                        <div class="col-2"><div class="row  fw-bold">Category Image</div>
+                        </div>
+                        <div class="col">
+                            <div class="row fw-bold">Category Details</div>
+                           
+                            
+                        </div>
+                        
+                        <div class="col "> </div>
+                        <div class="col">  </div>
+                        
+                            
+                    </div>
+                </div>
+                
                 <div class="row border-top border-bottom" *ngFor="let cat of categories">
                     <div class="row main align-items-center">
+                        <div class="col" id="positionchange">
+                            <div class="row " *ngIf='!(cat.categoryPosition==1)'><button class="btn btn-dark"  style="width:60px;">&uarr;</button></div>
+                            <div class="row fw-bold mt-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cat.categoryPosition}}</div>
+                            
+                            
+                            <div class="row" *ngIf='!(cat.categoryPosition==lastpos)'><button class="btn btn-dark"  style="width:60px;">&darr;</button></div>
+                            
+                            
                         
+                        </div>
                         <div class="col-2"><img class="img-fluid " style="width:150px"
                                 src={{cat.categoryImg}}>
                         </div>
@@ -28,6 +56,7 @@
                            </div>
                            <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">EDIT</button>
                            </div>
+                           
                             
                     </div>
                 </div>

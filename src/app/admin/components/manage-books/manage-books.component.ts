@@ -9,6 +9,7 @@ import { AdminService } from '../../services/admin.service';
 })
 export class ManageBooksComponent implements OnInit {
   books:any;
+  lastpos:any;
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class ManageBooksComponent implements OnInit {
   .subscribe( (res:any) =>{
     console.log(res)
     this.books=res;
+    this.lastpos=this.books.at(-1).bookPosition;
     
     
   })
