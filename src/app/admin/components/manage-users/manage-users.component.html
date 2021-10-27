@@ -1,0 +1,92 @@
+<div class="container" style="margin-top: 80px;margin-bottom: 80px;">
+    <div class="card">
+        
+            <div class=" cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Manage Users</b></h4>
+                        </div>
+                        <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
+                        
+                    </div>
+                </div>
+                <div class="row border-top border-bottom" >
+                    <div class="row main align-items-center">
+                        
+                        
+                        <div class="col fw-bold">
+                            <div > Username</div>
+                            
+                        </div>
+                        <div class="col fw-bold">
+                            <div >Firstname</div>
+                            
+                        </div>
+                        <div class="col fw-bold">
+                            <div > Lastname</div>
+                            
+                        </div>
+                        <div class="col fw-bold">
+                            <div > Email</div>
+                            
+                        </div>
+                        <div class="col fw-bold">
+                            <div > Phone no.</div>
+                            
+                        </div>
+                        <div class="col fw-bold">
+                            <div > Address</div>
+                            
+                        </div>
+                        <div class="col"></div>
+                            
+                    </div>
+                
+                <div class="row border-top border-bottom" *ngFor="let user of userslist">
+                    <div class="row main align-items-center">
+                        
+                        
+                        <div class="col ">
+                            <div > {{user.userName}}</div>
+                            
+                        </div>
+                        <div class="col ">
+                            <div > {{user.firstName}}</div>
+                            
+                        </div>
+                        <div class="col ">
+                            <div > {{user.lastName}}</div>
+                            
+                        </div>
+                        <div class="col ">
+                            <div > {{user.userEmail}}</div>
+                            
+                        </div>
+                        <div class="col ">
+                            <div > {{user.userMobile}}</div>
+                            
+                        </div>
+                        <div class="col ">
+                            <div > {{user.userAddress}}</div>
+                            
+                        </div>
+                        
+                        
+                        <div class="col ">
+                            <div *ngIf="user.isactive"><button  class="btn btn-danger w-2" style="margin-bottom: 40px;" (click)="handleEdit(user)">Deactivate</button>
+                            </div>
+                            <div *ngIf="!user.isactive"><button  class="btn btn-success w-2" style="margin-bottom: 40px;" (click)="handleEdit(user)" >Activate</button>
+                           </div>
+                            </div>
+                            
+                    </div>
+                </div>
+                
+              
+            
+        
+    </div>
+
+</div>
+
