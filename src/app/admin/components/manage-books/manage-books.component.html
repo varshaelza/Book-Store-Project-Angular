@@ -36,11 +36,11 @@
                 <div class="row border-top border-bottom" *ngFor="let book of books">
                     <div class="row main align-items-center">
                         <div class="col" id="positionchange">
-                            <div class="row " *ngIf='!(book.bookPosition==1)'><button class="btn btn-dark"  style="width:60px;">&uarr;</button></div>
+                            <div class="row " *ngIf='!(book.bookPosition==1)'><button (click)="moveBookup(book)" class="btn btn-dark"  style="width:60px;">&uarr;</button></div>
                             <div class="row fw-bold mt-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.bookPosition}}</div>
                             
                             
-                            <div class="row" *ngIf='!(book.bookPosition==lastpos)'><button class="btn btn-dark"  style="width:60px;">&darr;</button></div>
+                            <div class="row" *ngIf='!(book.bookPosition==books.length)'><button (click)="moveBookdown(book)" class="btn btn-dark"  style="width:60px;">&darr;</button></div>
                             
                             
                         
@@ -56,7 +56,7 @@
                             <div class="row">{{book.author}}</div>
                         </div>
                         <div class="col">&#8377; {{book.bookPrice}} </div>
-                        <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button>
+                        <div class="col"><button (click)="deleteBook(book)"class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button>
                            </div>
                            <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">EDIT</button>
                            </div>
