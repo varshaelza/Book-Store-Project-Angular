@@ -15,7 +15,6 @@ import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { ConfirmationComponent } from './shopping/components/confirmation/confirmation.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
-
 import { ManageBooksComponent } from './admin/components/manage-books/manage-books.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ManageCategoriesComponent } from './admin/components/manage-categories/manage-categories.component';

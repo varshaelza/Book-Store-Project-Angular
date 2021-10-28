@@ -7,7 +7,7 @@ import { BooksService } from '../../services/books.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit { 
 
   bookDetails: any;
   constructor(private bookService:BooksService, private route:ActivatedRoute) { }
@@ -22,6 +22,7 @@ export class BookDetailsComponent implements OnInit {
         console.log(res);
         this.bookDetails = res;
       });
+
   }
 
 }
