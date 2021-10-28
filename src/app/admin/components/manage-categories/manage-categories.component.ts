@@ -10,6 +10,7 @@ import { AdminService } from '../../services/admin.service';
 export class ManageCategoriesComponent implements OnInit {
   
   categories:any;
+  isdeleted:any=true;
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class ManageCategoriesComponent implements OnInit {
   moveCategoryup(category:any)
   {
 
-
+    this.isdeleted=true
     console.log("Updating Category Position");
     let shiftid=this.categories[this.categories.indexOf(category)-1].categoryId
     let shiftpos=this.categories[this.categories.indexOf(category)-1].categoryPosition
@@ -47,7 +48,7 @@ export class ManageCategoriesComponent implements OnInit {
   moveCategorydown(category:any)
   {
 
-    
+    this.isdeleted=true;
     console.log("Updating Category Position");
     let shiftid=this.categories[this.categories.indexOf(category)+1].categoryId
     let shiftpos=this.categories[this.categories.indexOf(category)+1].categoryPosition
@@ -74,7 +75,9 @@ export class ManageCategoriesComponent implements OnInit {
     this.adminService.deleteCategory(category.categoryId)
     .subscribe( (res:any) =>{
      if(res.find((i:any)=>i.categoryId===category.categoryId)!=null)
-     {alert('Unable to delete : Category in use')}
+     {
+       this.isdeleted=false
+     }
   
     this.categories=res
     

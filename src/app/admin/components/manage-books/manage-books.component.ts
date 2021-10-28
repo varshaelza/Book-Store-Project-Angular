@@ -10,6 +10,7 @@ import { AdminService } from '../../services/admin.service';
 })
 export class ManageBooksComponent implements OnInit {
   books:any;
+  isdeleted:any=true;
 
   constructor(private adminService:AdminService) { }
 
@@ -29,7 +30,7 @@ export class ManageBooksComponent implements OnInit {
   moveBookup(book:any)
   {
 
-
+    this.isdeleted  =true; 
     console.log("Updating Book Position");
     let shiftid=this.books[this.books.indexOf(book)-1].bookId
     let shiftpos=this.books[this.books.indexOf(book)-1].bookPosition
@@ -52,6 +53,7 @@ export class ManageBooksComponent implements OnInit {
 
   moveBookdown(book:any)
   {
+    this.isdeleted  =true; 
     console.log("Updating Book Position");
     let shiftid=this.books[this.books.indexOf(book)+1].bookId
     let shiftpos=this.books[this.books.indexOf(book)+1].bookPosition
@@ -77,7 +79,7 @@ deleteBook(book:any)
   this.adminService.deleteBook(book.bookId)
   .subscribe( (res:any) =>{
    if(res.find((i:any)=>i.bookId===book.bookId)!=null)
-   {alert('Unable to delete :Book in use')}
+   {this.isdeleted  =false;}
 
   this.books=res
   

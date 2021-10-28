@@ -78,6 +78,16 @@ export class AdminService {
       return res;
       }))
   }
+
+updateDiscount(formdata:any)
+{
+  return this.http.put('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+}
+
   getUsers()
   {
     return this.http.get('https://localhost:44346/Api/Users')

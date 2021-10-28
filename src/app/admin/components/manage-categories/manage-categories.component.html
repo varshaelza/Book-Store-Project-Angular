@@ -12,6 +12,9 @@
                                 ADD</button></div>
                     </div>
                 </div>
+                <div class="alert alert-danger" *ngIf='!isdeleted'  >
+                    Unable to Delete : Category in use
+                  </div>
                 <div class="row border-top border-bottom" >
                     <div class="row main align-items-center">
                         <div class="col"><div class="row  fw-bold">Category Position</div>
@@ -61,10 +64,14 @@
                     </div>
                 </div>
                 
+                
               
             
         
     </div>
+    <div class="alert alert-danger" *ngIf='!isdeleted'  >
+        Unable to Delete : Category in use
+      </div>
 
 </div>
 
