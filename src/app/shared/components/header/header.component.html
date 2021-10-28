@@ -1,31 +1,31 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">The Book Spot</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-        <form class="d-flex" >
-          <input class="form-control me-2" id="headersearch" type="search" placeholder="Search by Title or Author"
-            aria-label="Search">
-          <button class="btn btn-outline-success" id="searchbutton" type="submit">Search</button>
-        </form>
-        <app-menu>
-          <div id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" routerLinkActive="active" routerLink="/login" >Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" routerLinkActive="active" routerLink="/signup">Signup</a>
-              </li>
-  
-            </ul>
-          </div>
-        </app-menu>
-      </div>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">The Book Spot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+      <form class="d-flex">
+        <input class="form-control me-2"  type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author"
+          aria-label="Search" #headersearch>
+        <button class="btn btn-outline-success" id="searchbutton" (click)="headersearch.value=''" type="submit">Clear</button>
+      </form>
+      <app-menu>
+        <div id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" routerLinkActive="active" routerLink="/login" >Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLinkActive="active" routerLink="/signup">Signup</a>
+            </li>
+
+          </ul>
+        </div>
+      </app-menu>
+    </div>
+    </div>
+  </nav>
+</header>

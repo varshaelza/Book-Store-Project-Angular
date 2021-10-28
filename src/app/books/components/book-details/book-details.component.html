@@ -5,29 +5,30 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 	<div class="container mt-5">
-		<div class="card">
+		<div class="card"  *ngIf="bookDetails">
 			<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 						
 						<div class=" preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img style="width: 600px;height: 500px;" class="img-fluid" src="https://handcbooks.com/wp-content/uploads/2021/01/The-Intelligent-Investor.jpg" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane active" id="pic-1"><img style="width: 600px;height: 500px;" class="img-fluid" src="{{bookDetails[0].bookImage}}" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="{{bookDetails[0].bookImage}}" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="{{bookDetails[0].bookImage}}" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="{{bookDetails[0].bookImage}}" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="{{bookDetails[0].bookImage}}" /></div>
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
-							<li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+							<li class="active"><a data-target="#pic-1" data-toggle="tab"><img style="width: 100px;height: 100px;" src="{{bookDetails[0].bookImage}}" /></a></li>
+							<li><a data-target="#pic-2" data-toggle="tab"><img  style="width: 100px;height: 100px;"  src="{{bookDetails[0].bookImage}}" /></a></li>
+							<li><a data-target="#pic-3" data-toggle="tab"><img  style="width: 100px;height: 100px;"  src="{{bookDetails[0].bookImage}}" /></a></li>
+							<li><a data-target="#pic-4" data-toggle="tab"><img  style="width: 100px;height: 100px;"  src="{{bookDetails[0].bookImage}}" /></a></li>
+							<li><a data-target="#pic-5" data-toggle="tab"><img  style="width: 100px;height: 100px;"  src="{{bookDetails[0].bookImage}}" /></a></li>
 						  </ul>
 						  
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">Book Title</h3>
+						<h3 class="product-title">{{bookDetails[0].title}}</h3>
+						<p>{{bookDetails[0].author}}</p>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -38,8 +39,8 @@
 							</div>
 							<span class="review-no">41 reviews</span>
 						</div>
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">Price: <span>$180</span></h4>
+						<p class="product-description">{{bookDetails[0].bookDescription}}</p>
+						<h4 class="price">Price: <span>${{bookDetails[0].bookPrice}}</span></h4>
 						
 						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<h5 class="sizes">Type of Binding:
@@ -48,8 +49,8 @@
 						</h5>
 						
 						<div class="action">
-							<button class=" btn btn-dark" type="button">Add to cart</button>
-							<button class=" btn btn-dark" style="margin-left: 10px;" type="button"><span class="fa fa-heart"></span></button>
+							<button class=" btn btn-lg btn-dark" routerLink = "/cart" type="button">Add to cart</button>
+							<button class=" btn btn-lg btn-dark" routerLink = "/wishlist" style="margin-left: 10px;" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>
 				</div>
@@ -58,14 +59,14 @@
 		<div class="row">
 			<div class="col mt-5">
 				<h3>Customer Reviews</h3>
-				<h5>Name</h5>
+				<h5>Name 1</h5>
 				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa laborum porro omnis veritatis est quaerat quod eos quo quae praesentium veniam, non recusandae architecto deserunt. Officia, ex. Praesentium, sunt repudiandae.</p>
-				<h5>Name</h5>
+				<h5>Name 2</h5>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorum eos possimus molestias laborum, ullam praesentium perspiciatis illo corrupti esse iste repudiandae iusto nobis est a facilis quae aliquam officia!</p>
-				<h5>Name</h5>
+				<h5>Name 3</h5>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis molestiae blanditiis ut tempora eum assumenda quis, quos ipsam voluptas, ipsum architecto in. Pariatur ratione delectus ipsam optio reiciendis aut omnis.</p>
-				<h5>Name</h5>
-				<p>review 1</p>
+				<h5>Name 4</h5>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 				<label for="comments">Add reviews</label><br>
 				<textarea name="" id="" cols="50" rows="8" placeholder="Your reviews help us to improve better"></textarea><br>
 				<button class="btn btn-dark">ADD</button>

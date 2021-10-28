@@ -20,7 +20,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { ManageCategoriesComponent } from './admin/components/manage-categories/manage-categories.component';
 import { ManageDiscountsComponent } from './admin/components/manage-discounts/manage-discounts.component';
 import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { FilterPipe } from './shared/pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManageCategoriesComponent,
     ManageDiscountsComponent,
     ManageUsersComponent,
+    FilterPipe,
     
  
   ],
