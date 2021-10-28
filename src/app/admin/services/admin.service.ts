@@ -70,7 +70,14 @@ export class AdminService {
       }))
   }
 
-
+  deleteDiscount(couponId:any)
+  {
+    return this.http.delete(`https://localhost:44346/Api/Discount?p_couponId=${couponId}`)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
   getUsers()
   {
     return this.http.get('https://localhost:44346/Api/Users')

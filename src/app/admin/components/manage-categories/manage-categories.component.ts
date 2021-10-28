@@ -70,12 +70,9 @@ export class ManageCategoriesComponent implements OnInit {
 
   deleteCategory(category:any)
   {
-    let dupcat:any=category;
+    
     this.adminService.deleteCategory(category.categoryId)
     .subscribe( (res:any) =>{
-    console.log(res.indexOf(dupcat)!==-1)
-    
-    
      if(res.find((i:any)=>i.categoryId===category.categoryId)!=null)
      {alert('Unable to delete : Category in use')}
   
