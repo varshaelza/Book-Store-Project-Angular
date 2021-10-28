@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ManageCategoriesComponent } from './admin/components/manage-categories/manage-categories.component';
 import { ManageDiscountsComponent } from './admin/components/manage-discounts/manage-discounts.component';
 import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ManageUsersComponent } from './admin/components/manage-users/manage-use
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

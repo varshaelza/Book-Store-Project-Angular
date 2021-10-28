@@ -16,8 +16,15 @@ export class BookListComponent implements OnInit {
     
     this.bookService.getBooksByCatId(id)
       .subscribe( (res: any) => {
+        console.log(id);
         console.log(res);
-        this.bookList = res;
+        for (var r of res) {
+          if(r.bookStatus){
+            this.bookList.push(r)
+          }
+        }
+        
+        //this.bookList = res;
       });
   }
 
