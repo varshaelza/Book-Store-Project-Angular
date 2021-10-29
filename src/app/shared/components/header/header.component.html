@@ -8,9 +8,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <form class="d-flex">
-        <input class="form-control me-2" id="headersearch" type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author"
-          aria-label="Search">
-        <button class="btn btn-outline-success" id="searchbutton" type="submit">Search</button>
+        <input class="form-control me-2"  type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author"
+          aria-label="Search" #headersearch>
+        <button class="btn btn-outline-success" id="searchbutton" (click)="headersearch.value=''" type="submit">Clear</button>
       </form>
       <app-menu>
         <div id="navbarSupportedContent">
