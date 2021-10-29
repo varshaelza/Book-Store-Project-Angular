@@ -34,6 +34,15 @@ export class AdminService {
       return res;
       }))
   } 
+  updateBook(book:any)
+  {
+    return this.http.put('https://localhost:44346/Api/Books',book)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+
   getCategories()
   {
     return this.http.get('https://localhost:44346/Api/Category')
@@ -46,6 +55,14 @@ export class AdminService {
   updateCategorybyPos(catId:any,catPosition:any)
   {
     return this.http.put(`https://localhost:44346/Api/Category?id=${catId}&pos=${catPosition}`,catId)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+  updateCategory(cat:any)
+  {
+    return this.http.put(`https://localhost:44346/Api/Category?id=${cat.categoryId}`,cat)
     .pipe( map((res:any)=>{
       console.log(res);
       return res;

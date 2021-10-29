@@ -1,5 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
 
 
@@ -10,7 +11,12 @@ import { AdminService } from '../../services/admin.service';
 })
 export class ManageBooksComponent implements OnInit {
   books:any;
+  dupbook:any={bookId:0,categoryId:0,title:'',bookDescription:'',bookPosition:0,bookStatus:true,author:'',bookImage:'',ISBN:0,year:0,bookPrice:0,availableQty:0}
   isdeleted:any=true;
+  addSaved:any=false;
+  updateSaved:any=false;
+  firstmodal:any=true;
+  categories:any;
 
   constructor(private adminService:AdminService) { }
 
@@ -73,6 +79,7 @@ export class ManageBooksComponent implements OnInit {
   })
 
 }
+
 deleteBook(book:any)
 {
   
@@ -86,6 +93,44 @@ deleteBook(book:any)
 })
 
 
+}
+
+handleupdatemodalopen(book:any)
+{
+
+  this.isdeleted=true;
+  this.firstmodal=true;
+  this.updateSaved=false;
+  this.dupbook = { ...book  }; 
+  console.log(this.dupbook)
+  this.adminService.getCategories()
+  .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+  })
+
+}
+setcatid(event:any)
+{
+  // console.log("hi")
+  this.dupbook.categoryId=event.target.value;
+  // console.log("hhh"+this.dupbook.categoryId)
+  console.log(this.dupbook)
+}
+handlebookupdate()
+{
+  this.firstmodal=false;
+}
+
+handlestatusEdit(book:any)
+  {
+    this.isdeleted=true
+    book.bookStatus=!book.bookStatus
+    this.adminService.updateBook(book)
+    .subscribe( (res:any) =>{
+    console.log(res)
+    this.books=res;
+  })
 }
 
 }

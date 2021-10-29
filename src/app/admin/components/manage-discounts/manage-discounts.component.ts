@@ -95,7 +95,7 @@ handledisupdate()
   console.log(this.dupdis);
     this.firstmodal=false;
     // 2. send the above data to the service
-    this.updateSaved=false
+    // this.updateSaved=false
     this.adminService.updateDiscount(this.dupdis)
       .subscribe( (res: any) => { // 3. get the response from service
         console.log(res);
