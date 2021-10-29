@@ -1,27 +1,31 @@
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <div class="album py-5 bg-light mt-5">
     <div class="container ">
       
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-        <div class="col" *ngFor="let book of bookList">
+        <ng-container  *ngFor="let book of bookList  | filter:searchKey:['author', 'title']">
+        <div class="col">
           <div class="card shadow-sm" >
            
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225"  src="{{book.bookImage}}" class="card-img-top" alt="...">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="250"  src="{{book.bookImage}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <p class="card-text">{{book.title}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a class="nav-link" routerLinkActive="active" routerLink="/book-details/{{book.bookId}}"><button type="button" class="btn btn-sm btn-outline-secondary" >View</button></a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" >Edit</button>
+              <h4 class="card-text">{{book.title}}</h4> <span style="float: right;">Quantity : {{book.availableQty}}</span>
+              <p>Author : {{book.author}}</p>
+              <h5>Price : ${{book.bookPrice}} </h5>
+              <div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col"><button style="float: left;" routerLink="/book-details/{{book.bookId}}" type="button" class="btn btn-lg  btn-outline-secondary" title="View details">View</button></div>
+                    <div class="col"><button routerLink="/cart" type="button" style="width: 140px;" class="btn btn-lg  btn-outline-secondary" [disabled]="isAvailable(book.availableQty)" title="Add to cart" >Add to cart</button></div>
+                    <div class="col"><button routerLink="/wishlist" class="btn btn-lg  btn-outline-secondary"  type="button"><span class="fa fa-heart" title="Add to wishlist"></span></button></div>
+                  </div>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
-        </div>
-        
-          
+        </div>      
+        </ng-container>  
       </div>
     </div>
   </div>

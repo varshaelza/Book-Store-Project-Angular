@@ -7,8 +7,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-      <form class="d-flex" >
-        <input class="form-control me-2" id="headersearch" type="search" placeholder="Search by Title or Author"
+      <form class="d-flex">
+        <input class="form-control me-2" id="headersearch" type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author"
           aria-label="Search">
         <button class="btn btn-outline-success" id="searchbutton" type="submit">Search</button>
       </form>

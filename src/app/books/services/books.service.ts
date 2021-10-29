@@ -10,12 +10,21 @@ export class BooksService {
 
   constructor(private http: HttpClient) { }
 
-isNumber(value: string | number): boolean
-{
-   return ((value != null) &&
-           (value !== '') &&
-           !isNaN(Number(value.toString())));
-}
+  isNumber(value: string | number): boolean
+  {
+    return ((value != null) &&
+            (value !== '') &&
+            !isNaN(Number(value.toString())));
+  }
+
+  getAllBooks(){
+    let bookURL = `https://localhost:44346/api/Books`;
+    return this.http.get(bookURL)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
   getBooksByCatId(catId:string|null):any{
     console.log(catId);
     let catIdURL = "";
