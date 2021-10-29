@@ -69,7 +69,14 @@ export class AdminService {
       return res;
       }))
   }
-
+  addDiscount(formdata:any)
+  {
+    return this.http.post('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
   deleteDiscount(couponId:any)
   {
     return this.http.delete(`https://localhost:44346/Api/Discount?p_couponId=${couponId}`)

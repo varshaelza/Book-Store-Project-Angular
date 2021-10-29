@@ -8,13 +8,14 @@
                             <h4><b>Manage Discounts</b></h4>
                         </div>
                         <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
-                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark">
+                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark" (click)="handleAddmodalopen()"data-bs-toggle="modal"  data-bs-target="#addDiscountModal" >
                                 ADD</button></div>
                     </div>
                 </div>
                 <div class="alert alert-danger" *ngIf='!isdeleted'  >
-                    Unable to Delete : Discount in use
+                    Unable to Delete : Discount coupon in use
                   </div>
+                
                 <div class="row border-top border-bottom" >
                     <div class="row main align-items-center">
                         
@@ -56,7 +57,7 @@
                         
                         <div class="col "><button class="btn btn-dark w-2" style="margin-bottom: 40px;" (click)="handledisdelete(dis)">DELETE</button>
                            </div>
-                           <div class="col"><button class="btn btn-dark w-2" style="margin-bottom: 40px;" (click)="handlemodalopen(dis)"data-bs-toggle="modal"  data-bs-target="#editUserModal" >EDIT</button>
+                           <div class="col"><button class="btn btn-dark w-2" style="margin-bottom: 40px;" (click)="handleUpdatemodalopen(dis)"data-bs-toggle="modal"  data-bs-target="#editDiscountModal" >EDIT</button>
                            </div>
                             
                     </div>
@@ -67,15 +68,15 @@
             
         
     </div>
-    <div class="alert alert-danger" *ngIf='!isdeleted'  >
-        Unable to Delete : Discount in use
-      </div>
-    <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    
+
+      <!-- Update Modal -->
+    <div class="modal fade" id="editDiscountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Discount</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Discount Coupon</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -109,13 +110,69 @@
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
+
+
+
+
+
+          <!-- Add Modal -->
+    <div class="modal fade" id="addDiscountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Discount Coupon</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form ngNativeValidate [formGroup]="addDiscountForm" 
+           (ngSubmit)="handledisadd()"  >
+            <div class="form-group row mb-3">
+              <label for="couponcode" class="col-sm-5 col-form-label" >Coupon Code</label>
+              <div class="col-sm-7">
+                <input id="couponcode" type="text" class="form-control" [ngClass]="{ 'is-invalid': addDiscountForm.get('couponCode')?.touched && addDiscountForm.get('couponCode')?.invalid }" 
+                 formControlName="couponCode" name="couponCode" required>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="minpurchase" class="col-sm-5 col-form-label">Minimum Purchase</label>
+              <div class="col-sm-7">
+                <input id="minpurchase"type="number" class="form-control" [ngClass]="{ 'is-invalid': addDiscountForm.get('minPurchase')?.touched && addDiscountForm.get('minPurchase')?.invalid }" 
+                formControlName="minPurchase" name="minPurchase" required>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="percent" class="col-sm-5 col-form-label" >Discount Percent</label>
+              <div class="col-sm-7">
+                <input id="percent"type="number" [ngClass]="{ 'is-invalid': addDiscountForm.get('disPercent')?.touched && addDiscountForm.get('disPercent')?.invalid }" 
+                formControlName="disPercent" class="form-control"  required
+                   name="percent">
+              </div>
+            </div>
+
+            <div class="alert alert-success" *ngIf='addSaved'>
+              Added successfully!
+            </div>
+            <div class="alert alert-danger" *ngIf='!addSaved&&!firstmodal' >
+              Unable to Add!
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add Coupon</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </div>
