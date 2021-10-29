@@ -18,4 +18,15 @@ export class ManageDiscountsComponent implements OnInit {
     this.discounts=res;
   })
   }
+
+  handledisdelete(discount:any)
+  {
+    this.adminService.deleteDiscount(discount.couponId)
+    .subscribe( (res:any) =>{
+     if(res.find((i:any)=>i.couponId===discount.couponId)!=null)
+     {alert('Unable to delete : Discount in use')}
+  
+    this.discounts=res
+  })
+}
 }

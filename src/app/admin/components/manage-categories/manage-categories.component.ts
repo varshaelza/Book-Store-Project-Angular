@@ -1,3 +1,4 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 
@@ -7,7 +8,7 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./manage-categories.component.scss']
 })
 export class ManageCategoriesComponent implements OnInit {
-  lastpos:any;
+  
   categories:any;
   constructor(private adminService:AdminService) { }
 
@@ -17,12 +18,68 @@ export class ManageCategoriesComponent implements OnInit {
   .subscribe( (res:any) =>{
     console.log(res)
     this.categories=res;
-    this.lastpos=this.categories.at(-1).categoryPosition;
-    
     
   })
 
   }
 
-}
+  moveCategoryup(category:any)
+  {
 
+
+    console.log("Updating Category Position");
+    let shiftid=this.categories[this.categories.indexOf(category)-1].categoryId
+    let shiftpos=this.categories[this.categories.indexOf(category)-1].categoryPosition
+    console.log(this.categories.indexOf(category)-1)
+    this.adminService.updateCategorybyPos(category.categoryId,category.categoryPosition-1)
+    .subscribe( (res:any) =>{
+      console.log(res)
+      
+    })
+    this.adminService.updateCategorybyPos(shiftid,shiftpos+1)
+  .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+   
+  })
+  }
+
+  moveCategorydown(category:any)
+  {
+
+    
+    console.log("Updating Category Position");
+    let shiftid=this.categories[this.categories.indexOf(category)+1].categoryId
+    let shiftpos=this.categories[this.categories.indexOf(category)+1].categoryPosition
+    console.log(this.categories.indexOf(category)+1)
+    this.adminService.updateCategorybyPos(category.categoryId,category.categoryPosition+1)
+    .subscribe( (res:any) =>{
+      console.log(res)
+      
+    })
+    this.adminService.updateCategorybyPos(shiftid,shiftpos-1)
+  .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+    
+  })
+  
+  
+  }
+
+
+  deleteCategory(category:any)
+  {
+    
+    this.adminService.deleteCategory(category.categoryId)
+    .subscribe( (res:any) =>{
+     if(res.find((i:any)=>i.categoryId===category.categoryId)!=null)
+     {alert('Unable to delete : Category in use')}
+  
+    this.categories=res
+    
+  })
+ 
+
+}
+}

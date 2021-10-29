@@ -22,11 +22,12 @@ export class ManageUsersComponent implements OnInit {
 }
 handleEdit(user:any)
 {
+  console.log("Editting user");
   console.log(user.isactive)
   user.isactive=!user.isactive
   console.log(user)
 
-  console.log("Editting user");
+  
   this.adminService.editUser(user)
 .subscribe( (res:any) =>{
   console.log(res)
