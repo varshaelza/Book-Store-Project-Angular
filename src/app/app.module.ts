@@ -53,6 +53,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
