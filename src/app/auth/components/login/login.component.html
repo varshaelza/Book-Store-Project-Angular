@@ -7,7 +7,7 @@
         <div class="col-md-6 col-lg-8 d-flex align-items-center">
           <div class="card-body p-4 p-lg-5 text-black">
     
-            <form>
+            <form #f="ngForm" (ngSubmit)="handleLogin(f)" [formGroup]="loginForm">
     
               <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -17,17 +17,17 @@
               <h5 class="fw-normal mb-2 pb-2 h5" style="letter-spacing: 1px;">Sign into your account</h5>
     
               <div class="form-outline mb-4">
-                <input type="email" id="username_login" class="form-control form-control-lg " placeholder="UserName">
+                <input type="text" id="username_login" class="form-control form-control-lg " placeholder="UserName" name="username" formControlName="username" ngModel>
                 
               <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
     
               <div class="form-outline mb-4">
-                <input type="password" id="password_login" class="form-control form-control-lg" placeholder="Password">
+                <input type="password" id="password_login" class="form-control form-control-lg" placeholder="Password" name="password" formControlName="password" ngModel>
                 
               <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
     
               <div class="pt-1 mb-4">
-                <button class="btn btn-dark btn-lg btn-block" id="btn_login" type="button">Login</button>
+                <button class="btn btn-dark btn-lg btn-block" id="btn_login" type="submit">Login</button>
               </div>              
               <!-- <a class="small text-muted" routerLink="#!">Forgot password?</a> -->
               <p class="mb-4 pb-lg-2" style="color: #393f81;">Don't have an account? <a routerLink="/signup" style="color: #393f81;">Register here</a></p>

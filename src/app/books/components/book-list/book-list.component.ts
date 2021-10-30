@@ -1,7 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from 'src/app/shared/services/cart-data.service';
+import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { BooksService } from '../../services/books.service';
 @Component({
   selector: 'app-book-list',
@@ -13,7 +13,7 @@ export class BookListComponent implements OnInit {
   bookList: any[] = [];
   availability = false;
   searchKey: string = "";
-  constructor(private bookService: BooksService, private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private bookService: BooksService, private route: ActivatedRoute, private cartService: CartDataService) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('p_catID');
