@@ -24,6 +24,8 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     ManageDiscountsComponent,
     ManageUsersComponent,
     FilterPipe,
+
     
  
   ],
@@ -52,7 +55,8 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
