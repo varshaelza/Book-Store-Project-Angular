@@ -9,5 +9,17 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/wishlist">Wishlist</a>
       </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/manage-books">Manage Books</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/manage-categories">Manage Categories</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/manage-discounts">Manage Discounts</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/manage-users">Manage Users</a>
+      </li>
       <ng-content></ng-content>
   </ul>

@@ -1,0 +1,31 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartService {
+
+  constructor(private http: HttpClient) { }
+
+  getCartbyUserId(userId: string | null): any{ 
+    let cartUrl = `https://localhost:44346/api/Cart?userId=${userId}`;
+    return this.http.get(cartUrl)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getWishListbyUserId(userId: string | null): any{ 
+    let wishList = `https://localhost:44346/api/WishList?p_userId=${userId}`;
+    return this.http.get(wishList)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  
+}
