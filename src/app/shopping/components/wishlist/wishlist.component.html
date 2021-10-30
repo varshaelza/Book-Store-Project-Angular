@@ -8,7 +8,7 @@
                             <h4><b>My Wishlist</b></h4>
                         </div>
                         <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
-                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark">
+                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark" onclick="location.href='#' ">
                                 ADD</button></div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                                 <div class="row text-muted">{{book.title}}</div>
                                 <div class="row">{{book.author}}</div>
                             </div>
-                            <div class="col">&euro; {{book.bookPrice}} </div>
+                            <div class="col">&#8377; {{book.bookPrice}} </div>
                             <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                 <ng-template #elseBlock>
                     <h5 style="text-align: center;">No items found in Wishlist</h5>
                 </ng-template>
-                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="">&leftarrow;Back to shop</a></div>
             </div>
             
         

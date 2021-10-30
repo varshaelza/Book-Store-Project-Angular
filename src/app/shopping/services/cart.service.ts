@@ -27,5 +27,15 @@ export class CartService {
       }));
   }
 
+  updateBookQty(cartitem:any)
+  {
+    let cartUrl = `https://localhost:44346/api/Cart?id=${cartitem.cartId}`;
+    return this.http.put(cartUrl,cartitem)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
   
 }
