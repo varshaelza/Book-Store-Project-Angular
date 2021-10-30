@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -7,6 +7,8 @@ import {map} from 'rxjs/operators';
 })
 export class AdminService {
 
+  private url: string = 'https://api.imgur.com/3/thebookspot';
+  imageLink:any;
   constructor( private http:HttpClient) { }
   getBooks()
   {
@@ -34,9 +36,34 @@ export class AdminService {
       return res;
       }))
   } 
+
+  updateBook(book:any)
+  {
+    return this.http.put('https://localhost:44346/Api/Books',book)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+  addBook(book:any)
+  {
+    return this.http.post('https://localhost:44346/Api/Books',book)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
   getCategories()
   {
     return this.http.get('https://localhost:44346/Api/Category')
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+  addCategory(cat:any)
+  {
+    return this.http.post('https://localhost:44346/Api/Category',cat)
     .pipe( map((res:any)=>{
       console.log(res);
       return res;
@@ -46,6 +73,14 @@ export class AdminService {
   updateCategorybyPos(catId:any,catPosition:any)
   {
     return this.http.put(`https://localhost:44346/Api/Category?id=${catId}&pos=${catPosition}`,catId)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+  updateCategory(cat:any)
+  {
+    return this.http.put(`https://localhost:44346/Api/Category?id=${cat.categoryId}`,cat)
     .pipe( map((res:any)=>{
       console.log(res);
       return res;
@@ -69,7 +104,14 @@ export class AdminService {
       return res;
       }))
   }
-
+  addDiscount(formdata:any)
+  {
+    return this.http.post('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
   deleteDiscount(couponId:any)
   {
     return this.http.delete(`https://localhost:44346/Api/Discount?p_couponId=${couponId}`)
@@ -78,6 +120,16 @@ export class AdminService {
       return res;
       }))
   }
+
+updateDiscount(formdata:any)
+{
+  return this.http.put('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+}
+
   getUsers()
   {
     return this.http.get('https://localhost:44346/Api/Users')
@@ -94,5 +146,20 @@ export class AdminService {
       console.log(res);
       return res;
       }))
+  }
+
+  async uploadImage(imageFile:any):Promise<any>{
+    let formData = new FormData();
+    formData.append('image', imageFile, imageFile.name);
+ 
+    let header = new HttpHeaders({
+      "authorization": 'Client-ID '+'59f5d52a661ee19'
+    });
+   
+    const imageData:any = await this.http.post(this.url, formData, {headers:header}).toPromise();
+    this.imageLink = imageData['data'].link;
+ 
+    console.log(this.imageLink)
+ 
   }
 }

@@ -12,49 +12,27 @@
                                 ADD</button></div>
                     </div>
                 </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid"
-                                src="https://handcbooks.com/wp-content/uploads/2021/01/The-Intelligent-Investor.jpg">
+                <div *ngIf="booksPresent; else elseBlock">
+                    <div class="row border-top" *ngFor="let book of bookList; index as i">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid"
+                                    src="{{book.bookImage}}">
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted">{{book.title}}</div>
+                                <div class="row">{{book.author}}</div>
+                            </div>
+                            <div class="col"> <a href="#">-</a><a href="#" class="border">{{book.Qty}}</a><a href="#">+</a> </div>
+                            <div class="col">&euro; {{book.bookPrice}} </div>
+                            <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
                         </div>
-                        <div class="col">
-                            <div class="row text-muted">Book title</div>
-                            <div class="row">Author Name</div>
-                        </div>
-                        <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                        <div class="col">&euro; 44.00 </div>
-                        <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid"
-                                src="https://handcbooks.com/wp-content/uploads/2021/01/The-Intelligent-Investor.jpg">
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted">Book title</div>
-                            <div class="row">Author Name</div>
-                        </div>
-                        <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                        <div class="col">&euro; 44.00 </div>
-                        <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid"
-                                src="https://handcbooks.com/wp-content/uploads/2021/01/The-Intelligent-Investor.jpg">
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted">Book title</div>
-                            <div class="row">Author Name</div>
-                        </div>
-                        <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                        <div class="col">&euro; 44.00 </div>
-                        <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
-                    </div>
-                </div>
-                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+
+                <ng-template #elseBlock>
+                    <h5 style="text-align: center;">No items found in Cart</h5>
+                </ng-template>
+                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
             </div>
             <div class="col-md-4 summary">
                 <div>
@@ -62,18 +40,17 @@
                 </div>
                 <hr>
                 <div class="">
-                    <div class="col" style="padding-left:2;">ITEMS 3</div><br>
+                    <div class="col" style="padding-left:2;">Items in Cart : {{cartCount}}</div><br>
 
                 </div>
                 <form>
                     <p>SHIPPING</p> <select>
-                        <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+                        <option class="text-muted">Standard-Delivery- &euro;0.00</option>
                     </select>
-                    <!--<p>GIVE CODE</p> <input id="code" placeholder="Enter your code">-->
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
-                    <div class="col text-right">&euro; 137.00</div>
+                    <div class="col text-right">&euro; {{totalPrice}}</div>
                 </div> <button class="btn btn-dark">MAKE PAYMENT</button>
             </div>
         </div>

@@ -13,20 +13,22 @@ import { ManageBooksComponent } from './admin/components/manage-books/manage-boo
 import { ManageCategoriesComponent } from './admin/components/manage-categories/manage-categories.component';
 import { ManageDiscountsComponent } from './admin/components/manage-discounts/manage-discounts.component';
 import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminAuthGuard } from './shared/guards/admin-auth.guard';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'list-books/:p_catID',component:BookListComponent},
   {path:'book-details/:bookId',component:BookDetailsComponent},
-  {path:'cart',component:CartComponent},
-  {path:'checkout', component:CheckoutComponent},
-  {path:'confirm',component:ConfirmationComponent},
-  {path:'wishlist',component:WishlistComponent},
-  {path:'manage-books',component:ManageBooksComponent},
-  {path:'manage-categories',component:ManageCategoriesComponent},
-  {path:'manage-discounts',component:ManageDiscountsComponent},
-  {path:'manage-users',component:ManageUsersComponent},
+  {path:'cart',component:CartComponent, canActivate:[AuthGuard]},
+  {path:'checkout', component:CheckoutComponent, canActivate:[AuthGuard]},
+  {path:'confirm',component:ConfirmationComponent, canActivate:[AuthGuard]},
+  {path:'wishlist',component:WishlistComponent, canActivate:[AuthGuard]},
+  {path:'manage-books',component:ManageBooksComponent, canActivate:[AdminAuthGuard]},
+  {path:'manage-categories',component:ManageCategoriesComponent, canActivate:[AdminAuthGuard]},
+  {path:'manage-discounts',component:ManageDiscountsComponent, canActivate:[AdminAuthGuard]},
+  {path:'manage-users',component:ManageUsersComponent, canActivate:[AdminAuthGuard]},
   {path:'',component:HomeComponent}
 ];
 

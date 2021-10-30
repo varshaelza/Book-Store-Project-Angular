@@ -55,7 +55,8 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+
     
   ],
   providers: [],

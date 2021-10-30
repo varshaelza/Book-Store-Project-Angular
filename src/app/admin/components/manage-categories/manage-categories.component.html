@@ -8,10 +8,13 @@
                             <h4><b>Manage Categories</b></h4>
                         </div>
                         <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
-                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark">
+                        <div class="col align-self-center text-right text-muted"><button class="btn btn-dark" (click)="handleaddmodalopen()"data-bs-toggle="modal"  data-bs-target="#addCategoryModal">
                                 ADD</button></div>
                     </div>
                 </div>
+                <div class="alert alert-danger" *ngIf='!isdeleted'  >
+                    Unable to Delete : Category in use
+                  </div>
                 <div class="row border-top border-bottom" >
                     <div class="row main align-items-center">
                         <div class="col"><div class="row  fw-bold">Category Position</div>
@@ -23,7 +26,7 @@
                            
                             
                         </div>
-                        
+                        <div class="col "> </div>
                         <div class="col "> </div>
                         <div class="col">  </div>
                         
@@ -54,12 +57,19 @@
                         
                         <div class="col "><button (click)="deleteCategory(cat)"class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button>
                            </div>
-                           <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">EDIT</button>
+                           <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;" (click)="handleupdatemodalopen(cat)"data-bs-toggle="modal"  data-bs-target="#editCategoryModal" >EDIT</button>
                            </div>
+                           <div class="col ">
+                            <div *ngIf="cat.categoryStatus"><button  class="btn btn-danger w-2" style="margin-bottom: 40px;" (click)="handlestatusEdit(cat)">Deactivate</button>
+                            </div>
+                            <div *ngIf="!cat.categoryStatus"><button  class="btn btn-success w-2" style="margin-bottom: 40px;" (click)="handlestatusEdit(cat)" >Activate</button>
+                           </div>
+                            </div>
                            
                             
                     </div>
                 </div>
+                
                 
               
             
@@ -68,3 +78,106 @@
 
 </div>
 
+<!-- Add Modal -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form ngNativeValidate (ngSubmit)="handlecatadd()" >
+        <div class="form-group row mb-3">
+          <label for="catname" class="col-sm-5 col-form-label" >Category name</label>
+          <div class="col-sm-7">
+            <input id="catname" type="text" class="form-control" value={{dupcat.categoryName}} [(ngModel)]="dupcat.categoryName" name="catname" required>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="catdesc" class="col-sm-5 col-form-label">Category description</label>
+          <div class="col-sm-7">
+            <textarea id="catdesc" class="form-control" value={{dupcat.categoryDesc}}  [(ngModel)]="dupcat.categoryDesc"name="catdesc" required></textarea>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="pos" class="col-sm-5 col-form-label"> Position</label>
+          <div class="col-sm-7">
+            <input id="pos" type="number" class="form-control" value={{dupcat.categoryPosition}} [(ngModel)]="dupcat.categoryPosition" name="pos" required>
+          </div>
+        </div>
+ 
+
+        <div class="form-group row mb-3">
+         <label for="img" class="col-sm-5 col-form-label" >Image link</label>
+         <div class="col-sm-7">
+           <input id="img" type="text" class="form-control" value={{dupcat.categoryImg}} [(ngModel)]="dupcat.categoryImg" name="img" required>
+         </div>
+       </div>
+
+        <div class="alert alert-success" *ngIf='addSaved'>
+          Added successfully!
+        </div>
+        <div class="alert alert-danger" *ngIf='!addSaved&&!firstmodal' >
+          Unable to Add!
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+           <!-- Update Modal -->
+           <div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <form ngNativeValidate (ngSubmit)="handlecatupdate()" >
+                   <div class="form-group row mb-3">
+                     <label for="catname" class="col-sm-5 col-form-label" >Category name</label>
+                     <div class="col-sm-7">
+                       <input id="catname" type="text" class="form-control" value={{dupcat.categoryName}} [(ngModel)]="dupcat.categoryName" name="catname" required>
+                     </div>
+                   </div>
+                   <div class="form-group row mb-3">
+                     <label for="catdesc" class="col-sm-5 col-form-label">Category description</label>
+                     <div class="col-sm-7">
+                       <textarea id="catdesc" class="form-control" value={{dupcat.categoryDesc}}  [(ngModel)]="dupcat.categoryDesc"name="catdesc" required></textarea>
+                     </div>
+                   </div>
+        
+                   <div class="form-group row mb-3">
+                    <label for="img" class="col-sm-5 col-form-label" >Image link</label>
+                    <div class="col-sm-7">
+                      <input id="img" type="text" class="form-control" value={{dupcat.categoryImg}} [(ngModel)]="dupcat.categoryImg" name="img" required>
+                    </div>
+                  </div>
+       
+                   <div class="alert alert-success" *ngIf='updateSaved'>
+                     Updated successfully!
+                   </div>
+                   <div class="alert alert-danger" *ngIf='!updateSaved&&!firstmodal' >
+                     Unable to Update!
+                   </div>
+       
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-primary">Save Changes</button>
+                   </div>
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+</div>
