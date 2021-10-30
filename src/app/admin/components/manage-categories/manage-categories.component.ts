@@ -10,6 +10,11 @@ import { AdminService } from '../../services/admin.service';
 export class ManageCategoriesComponent implements OnInit {
   
   categories:any;
+  dupcat:any={categoryName:"",categoryPosition:0,categoryDesc:'',categoryStatus:0,categoryImg:'',categoryId:0,categoryCreatedAt:''}
+  isdeleted:any=true;
+  addSaved:any=false;
+  updateSaved:any=false;
+  firstmodal:any=true;
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -26,7 +31,7 @@ export class ManageCategoriesComponent implements OnInit {
   moveCategoryup(category:any)
   {
 
-
+    this.isdeleted=true
     console.log("Updating Category Position");
     let shiftid=this.categories[this.categories.indexOf(category)-1].categoryId
     let shiftpos=this.categories[this.categories.indexOf(category)-1].categoryPosition
@@ -47,7 +52,7 @@ export class ManageCategoriesComponent implements OnInit {
   moveCategorydown(category:any)
   {
 
-    
+    this.isdeleted=true;
     console.log("Updating Category Position");
     let shiftid=this.categories[this.categories.indexOf(category)+1].categoryId
     let shiftpos=this.categories[this.categories.indexOf(category)+1].categoryPosition
@@ -67,6 +72,7 @@ export class ManageCategoriesComponent implements OnInit {
   
   }
 
+  
 
   deleteCategory(category:any)
   {
@@ -74,7 +80,9 @@ export class ManageCategoriesComponent implements OnInit {
     this.adminService.deleteCategory(category.categoryId)
     .subscribe( (res:any) =>{
      if(res.find((i:any)=>i.categoryId===category.categoryId)!=null)
-     {alert('Unable to delete : Category in use')}
+     {
+       this.isdeleted=false
+     }
   
     this.categories=res
     
@@ -82,4 +90,26 @@ export class ManageCategoriesComponent implements OnInit {
  
 
 }
+handleupdatemodalopen(cat:any)
+{
+  this.isdeleted=true;
+  this.firstmodal=true;
+  this.updateSaved=false;
+  this.dupcat = { ...cat  }; 
+
+}
+handlecatupdate()
+{
+  this.firstmodal=false;
+}
+handlestatusEdit(cat:any)
+  {
+    cat.categoryStatus=!cat.categoryStatus
+    this.adminService.updateCategory(cat)
+    .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+  })
+}
+
 }

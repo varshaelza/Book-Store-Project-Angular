@@ -12,6 +12,9 @@
                                 ADD</button></div>
                     </div>
                 </div>
+                <div class="alert alert-danger" *ngIf='!isdeleted'  >
+                    Unable to Delete : Book in use
+                  </div>
                 <div class="row border-top border-bottom" >
                     <div class="row main align-items-center">
                         <div class="col"><div class="row  fw-bold">Book Position</div>
@@ -58,12 +61,106 @@
                         <div class="col">&#8377; {{book.bookPrice}} </div>
                         <div class="col"><button (click)="deleteBook(book)"class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button>
                            </div>
-                           <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">EDIT</button>
+                           <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;" (click)="handleupdatemodalopen(book)"data-bs-toggle="modal"  data-bs-target="#editBookModal" >EDIT</button>
                            </div>
+                           <div class="col ">
+                            <div *ngIf="book.bookStatus"><button  class="btn btn-danger w-2" style="margin-bottom: 40px;" (click)="handlestatusEdit(book)">Deactivate</button>
+                            </div>
+                            <div *ngIf="!book.bookStatus"><button  class="btn btn-success w-2" style="margin-bottom: 40px;" (click)="handlestatusEdit(book)" >Activate</button>
+                           </div>
+                            </div>
                             
                     </div>
                 </div>            
         
     </div>
+
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form ngNativeValidate (ngSubmit)="handlebookupdate()" >
+            <div class="form-group row mb-3">
+              <label for="bookname" class="col-sm-5 col-form-label" >Book Title</label>
+              <div class="col-sm-7">
+                <input id="bookname" type="text" class="form-control" value={{dupbook.title}} [(ngModel)]="dupbook.title" name="bookname" required>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+            <label for="author" class="col-sm-5 col-form-label" >Author</label>
+              <div class="col-sm-7">
+                <input id="author" type="text" class="form-control" value={{dupbook.author}} [(ngModel)]="dupbook.author" name="author" required>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="bookdesc" class="col-sm-5 col-form-label">Book description</label>
+                <div class="col-sm-7">
+                  <textarea id="bookdesc" class="form-control" value={{dupbook.bookDescription}} [(ngModel)]="dupbook.bookDescription" name="bookdesc" required></textarea>
+                </div>
+              </div>
+            <div class="form-group row mb-3">
+                <label for="isbn" class="col-sm-5 col-form-label" >ISBN</label>
+                <div class="col-sm-7">
+                  <input id="isbn" type="number" class="form-control" value={{dupbook.ISBN}} [(ngModel)]="dupbook.ISBN" name="isbn" required>
+                </div>
+              </div>
+
+              <div class="form-group row mb-3">
+                <label for="year" class="col-sm-5 col-form-label" >Year of Publishing</label>
+                <div class="col-sm-7">
+                  <input id="year" type="number" class="form-control" value={{dupbook.year}}  name="year" required>
+                </div>
+              </div>
+              <div class="form-group row mb-3">
+                <label for="price" class="col-sm-5 col-form-label" >Price</label>
+                <div class="col-sm-7">
+                  <input id="price" type="number" class="form-control" value={{dupbook.bookPrice}}  name="price" required>
+                </div>
+              </div>
+
+              <div class="form-group row mb-3">
+                <label for="qty" class="col-sm-5 col-form-label" >Available Qty.</label>
+                <div class="col-sm-7">
+                  <input id="qty" type="number" class="form-control" value={{dupbook.availableQty}}  name="qty" required>
+                </div>
+              </div>
+            
+              <div class="form-group row mb-3">
+                <label for="qty" class="col-sm-5 col-form-label" >Category</label>
+                <div class="col-sm-7">
+           
+                    <select name="categories" (change)="setcatid($event)" >
+                
+                <option  *ngFor="let cat of categories" [value]="cat.categoryId">{{cat.categoryName}}</option>
+                </select>
+                
+            
+            </div>
+            </div>
+
+            <div class="alert alert-success" *ngIf='updateSaved'>
+              Updated successfully!
+            </div>
+            <div class="alert alert-danger" *ngIf='!updateSaved&&!firstmodal' >
+              Unable to Update!
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    
 
 </div>

@@ -34,6 +34,15 @@ export class AdminService {
       return res;
       }))
   } 
+  updateBook(book:any)
+  {
+    return this.http.put('https://localhost:44346/Api/Books',book)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+
   getCategories()
   {
     return this.http.get('https://localhost:44346/Api/Category')
@@ -46,6 +55,14 @@ export class AdminService {
   updateCategorybyPos(catId:any,catPosition:any)
   {
     return this.http.put(`https://localhost:44346/Api/Category?id=${catId}&pos=${catPosition}`,catId)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+  updateCategory(cat:any)
+  {
+    return this.http.put(`https://localhost:44346/Api/Category?id=${cat.categoryId}`,cat)
     .pipe( map((res:any)=>{
       console.log(res);
       return res;
@@ -69,7 +86,14 @@ export class AdminService {
       return res;
       }))
   }
-
+  addDiscount(formdata:any)
+  {
+    return this.http.post('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
   deleteDiscount(couponId:any)
   {
     return this.http.delete(`https://localhost:44346/Api/Discount?p_couponId=${couponId}`)
@@ -78,6 +102,16 @@ export class AdminService {
       return res;
       }))
   }
+
+updateDiscount(formdata:any)
+{
+  return this.http.put('https://localhost:44346/Api/Discount',formdata)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+}
+
   getUsers()
   {
     return this.http.get('https://localhost:44346/Api/Users')
