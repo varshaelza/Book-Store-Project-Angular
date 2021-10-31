@@ -15,6 +15,7 @@ import { Validator } from '@angular/forms';
 
 export class SignupComponent implements OnInit {
 
+  isregistered:any=true;
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,private router: Router ) { }  
 
   addUserForm = new FormGroup({
@@ -43,7 +44,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['']);
         }
         else{
-          alert('Invalid username. Please try again');
+          this.isregistered=false
         }
      
       });
