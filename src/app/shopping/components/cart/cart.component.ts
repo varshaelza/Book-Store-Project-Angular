@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
 import { BooksService } from 'src/app/books/services/books.service';
 import { CartService } from 'src/app/shopping/services/cart.service';
 
@@ -15,11 +15,21 @@ export class CartComponent implements OnInit {
   booksPresent: any=true;
   currentUser: any;
   totalPrice = 0;
+  cartitem:any;
   constructor(private cartService: CartService, private bookService: BooksService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
 
+    this.getcartbyUserid();
+
+  }
+
+  getcartbyUserid()
+  {
+    this.cartList=[]
+    this.bookList=[]
+    this.totalPrice=0
     this.cartService.getCartbyUserId(this.currentUser)
       .subscribe((res: any) => {
         console.log(res);
@@ -38,7 +48,37 @@ export class CartComponent implements OnInit {
         }
 
       });
+  }
+  handleQtyadd(book:any)
+  {
+    
+    this.cartitem=this.cartList.find((i:any)=>i.bookId===book.bookId)
+    this.cartitem.bookQty=this.cartitem.bookQty+1;
+    this.cartService.updateBookQty(this.cartitem).subscribe((books: any) =>{
+    console.log(books);
+    this.getcartbyUserid();
+    })
 
+  }
+
+  handleQtysub(book:any)
+  {
+    this.cartitem=this.cartList.find((i:any)=>i.bookId===book.bookId)
+    this.cartitem.bookQty=this.cartitem.bookQty-1;
+    this.cartService.updateBookQty(this.cartitem).subscribe((books: any) =>{
+    console.log(books);
+    this.getcartbyUserid();
+    })
+ 
+  }
+
+  handleDelete(book:any)
+  {
+    this.cartitem=this.cartList.find((i:any)=>i.bookId===book.bookId) 
+    this.cartService.deleteBookfromCart(this.cartitem.cartId).subscribe((books: any) =>{
+      console.log(books);
+      this.getcartbyUserid();
+      })
   }
 }
 

@@ -27,5 +27,33 @@ export class CartService {
       }));
   }
 
+  updateBookQty(cartitem:any)
+  {
+    let cartUrl = `https://localhost:44346/api/Cart?id=${cartitem.cartId}`;
+    return this.http.put(cartUrl,cartitem)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+deleteBookfromCart(cartId:any)
+{
+  let cartUrl = `https://localhost:44346/api/Cart?id=${cartId}`;
+  return this.http.delete(cartUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+}
+
+deleteBookfromWishlist(wishId:any)
+{
+  let wishUrl = `https://localhost:44346/api/Wishlist?p_wishId=${wishId}`;
+  return this.http.delete(wishUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+}
   
 }
