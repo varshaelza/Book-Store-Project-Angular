@@ -4,8 +4,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
-	<div class="container mt-5">
-		<div class="card"  *ngIf="bookDetails">
+	<div class="container mt-5" >
+		<div class="card" style="margin-top: 100px;box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 20px;"  *ngIf="bookDetails">
 			<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
@@ -49,8 +49,8 @@
 						</h5>
 						
 						<div class="action">
-							<button class=" btn btn-lg btn-dark" routerLink = "/cart" type="button">Add to cart</button>
-							<button class=" btn btn-lg btn-dark" routerLink = "/wishlist" style="margin-left: 10px;" type="button"><span class="fa fa-heart"></span></button>
+							<button class=" btn btn-lg btn-dark" routerLink = "/cart" type="button" (click)="handleAddToCart(bookDetails[0])">Add to cart</button>
+							<button class=" btn btn-lg btn-dark" routerLink = "/wishlist" style="margin-left: 10px;" type="button" (click)="handleAddToWishlist(bookDetails[0])"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>
 				</div>
