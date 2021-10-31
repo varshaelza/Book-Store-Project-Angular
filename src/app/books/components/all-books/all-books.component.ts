@@ -10,6 +10,7 @@ import { BooksService } from '../../services/books.service';
 export class AllBooksComponent implements OnInit {
   searchValue: any;
   bookList: any[] = [];
+  bookId:any;
   constructor(private menuService: MenuService, private bookService: BooksService) { }
 
   ngOnInit(): void {
@@ -30,6 +31,23 @@ export class AllBooksComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+
+  handleAddToCart(book: any){
+    this.bookId = book.bookId;
+    console.log(this.bookId);
+    this.bookService.addToCart(book).subscribe((res: any)=>{
+      console.log(res);
+    })
+  }
+
+  handleAddToWishlist(book:any){
+    this.bookId = book.bookId;
+    console.log(this.bookId);
+    this.bookService.addToWishList(book).subscribe((res: any)=>{
+      console.log(res);
+    })
   }
 
 }

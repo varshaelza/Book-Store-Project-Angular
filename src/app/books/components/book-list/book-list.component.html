@@ -1,44 +1,43 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <div class="album py-5 bg-light mt-5">
-    <div class="container ">
-      
+  <div class="container ">
+    <div *ngIf="booksPresent; else elseBlock">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <ng-container  *ngFor="let book of bookList  | filter:searchKey:['author', 'title']">
-        <div class="col">
-          <div class="card shadow-sm" >
-           
-            <img class="bd-placeholder-img card-img-top" width="100%" height="250"  src="{{book.bookImage}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h4 class="card-text">{{book.title}}</h4> <span style="float: right;">Quantity : {{book.availableQty}}</span>
-              <p>Author : {{book.author}}</p>
-              <h5>Price : &#8377;{{book.bookPrice}} </h5>
-              <div>
-                <div class="container">
-                  <div class="row">
-                    <div class="col"><button style="float: left;" routerLink="/book-details/{{book.bookId}}" type="button" class="btn btn-lg  btn-outline-secondary" title="View details">View</button></div>
-                    <div class="col"><button routerLink="/cart" type="button" style="width: 140px;" class="btn btn-lg  btn-outline-secondary" [disabled]="isAvailable(book.availableQty)" title="Add to cart" >Add to cart</button></div>
-                    <div class="col"><button routerLink="/wishlist" class="btn btn-lg  btn-outline-secondary"  type="button"><span class="fa fa-heart" title="Add to wishlist"></span></button></div>
+        <ng-container *ngFor="let book of bookList  | filter:searchKey:['author', 'title']">
+          <div class="col">
+            <div class="card shadow-sm">
+
+              <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="{{book.bookImage}}"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h4 class="card-text">{{book.title}}</h4> <span style="float: right;">Quantity :
+                  {{book.availableQty}}</span>
+                <p>Author : {{book.author}}</p>
+                <h5>Price : &#8377;{{book.bookPrice}} </h5>
+                <div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col"><button style="float: left;" routerLink="/book-details/{{book.bookId}}"
+                          type="button" class="btn btn-lg  btn-outline-secondary" title="View details">View</button>
+                      </div>
+                      <div class="col"><button routerLink="/cart" type="button" style="width: 140px;"
+                          class="btn btn-lg  btn-outline-secondary" [disabled]="isAvailable(book.availableQty)"
+                          title="Add to cart" (click)="handleAddToCart(book)">Add to cart</button></div>
+                      <div class="col"><button routerLink="/wishlist" class="btn btn-lg  btn-outline-secondary"
+                          type="button" (click)="handleAddToWishlist(book)"><span class="fa fa-heart"
+                            title="Add to wishlist"></span></button></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>      
-        </ng-container>  
+        </ng-container>
       </div>
     </div>
+    <ng-template #elseBlock>
+      <h4 style="text-align: center;">No books available in this Category</h4>
+    </ng-template>
   </div>
-
-
-  <!--
-        <div class="card" style="width: 18rem;"  *ngFor="let book of bookList">
-          <img src="{{book.bookImage}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{book.bookImage}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-    
-  -->
+</div>
