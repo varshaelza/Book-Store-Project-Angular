@@ -1,15 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  currUrl: any;
-  public adminstatus = new BehaviorSubject<boolean>(false);
+export class AuthService { 
+
   constructor(private http: HttpClient) { }
+  usersname:any=''; 
+  createUser( formData: any):any{    
+    return this.http.post('https://localhost:44346/api/Users', formData)
+      .pipe( map((res: any) => {              
+        return res;
+      })); 
+  }
+
+  currUrl: any;
+  public adminstatus = new BehaviorSubject<boolean>(false); 
 
 
   login(formData: any): any {
@@ -36,4 +48,9 @@ export class AuthService {
       return false;
     }
   }
+
 }
+function res(res: any, any: any): import("rxjs").OperatorFunction<ArrayBuffer, unknown> {
+  throw new Error('Function not implemented.');
+}
+

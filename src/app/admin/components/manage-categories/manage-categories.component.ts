@@ -90,6 +90,31 @@ export class ManageCategoriesComponent implements OnInit {
  
 
 }
+handleaddmodalopen()
+{
+  this.isdeleted=true;
+  this.firstmodal=true;
+  this.addSaved=false;
+  this.dupcat={categoryName:'',categoryPosition:1,categoryDesc:'',categoryStatus:1,categoryImg:'',categoryId:0,categoryCreatedAt:''}
+  
+
+}
+
+handlecatadd()
+{
+  this.firstmodal=false;
+  this.adminService.addCategory(this.dupcat)
+    .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+    if(res.find((i:any)=>i.categoryDesc===this.dupcat.categoryDesc&&i.categoryName===this.dupcat.categoryName&&i.categoryImg===this.dupcat.categoryImg&&i.categoryPosition===this.dupcat.categoryPosition&&i.categoryStatus===true)!=null)
+     {
+       this.addSaved=true;
+     }
+    
+  })
+}
+
 handleupdatemodalopen(cat:any)
 {
   this.isdeleted=true;
@@ -101,7 +126,18 @@ handleupdatemodalopen(cat:any)
 handlecatupdate()
 {
   this.firstmodal=false;
+  this.adminService.updateCategory(this.dupcat)
+    .subscribe( (res:any) =>{
+    console.log(res)
+    this.categories=res;
+    if(res.find((i:any)=>i.categoryId===this.dupcat.categoryId&&i.categoryDesc===this.dupcat.categoryDesc&&i.categoryName===this.dupcat.categoryName&&i.categoryImg===this.dupcat.categoryImg&&this.dupcat.categoryPosition===i.categoryPosition&&i.categoryStatus===this.dupcat.categoryStatus)!=null)
+     {
+       this.updateSaved=true;
+     }
+    
+  })
 }
+
 handlestatusEdit(cat:any)
   {
     cat.categoryStatus=!cat.categoryStatus

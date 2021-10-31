@@ -26,6 +26,8 @@ import { ViewProfileComponent } from './profile/components/view-profile/view-pro
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +49,7 @@ import { AllBooksComponent } from './books/components/all-books/all-books.compon
     ManageUsersComponent,
     FilterPipe,
     ViewProfileComponent,
-    AllBooksComponent,
- 
+    AllBooksComponent, 
   ],
   imports: [
     BrowserModule,
@@ -56,6 +57,8 @@ import { AllBooksComponent } from './books/components/all-books/all-books.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

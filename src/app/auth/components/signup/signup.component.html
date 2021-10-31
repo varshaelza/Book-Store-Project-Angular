@@ -1,83 +1,160 @@
-<section style="margin-left:10%;margin-right:10% "class="mt-5">
-    
-        <div class="card-body p-4 p-lg-5 text-black">
-    
-            <form>
-    
-              <div class="d-flex align-items-center mb-3 pb-1">
+<section style="margin-left:10%;margin-right:10% " class="mt-5">
+
+    <div class="card-body p-4 p-lg-5 text-black">
+
+        <form [formGroup]="addUserForm" (ngSubmit)="handleAddUser()">
+            <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                <span class="h2 fw-bold mb-0">Signup</span>
-              </div>
-              <h5 class=" fw-normal mb-2 pb-2 h5" style="letter-spacing: 1px;">Create an account</h5>  
-              <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-outline mb-4">
-                            <label for="firstname_signup" class="fs-6 fw-normal">First Name:</label>
-                            <input type="text" id="firstname_signup" class="form-control form-control-lg " >
-                            
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
-
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-outline mb-4">
-                            <label for="lastname_signup" class="fs-6 fw-normal">Last Name:</label>
-                            <input type="text" id="lastname_signup" class="form-control form-control-lg " >
-                            
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-outline mb-4">
-                            <label for="email_signup" class="fs-6 fw-normal">Email:</label>
-                            <input type="email" id="email_signup" class="form-control form-control-lg" >
-                            
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
-              
-                    </div>
-              
-              </div>
-              <div class="row">
-               
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-outline mb-4">
-                            <label for="phoneno_signup" class="fs-6 fw-normal">Phone.no:</label>
-                            <input type="tel" id="phoneno_signup" class="form-control form-control-lg " >
-                            
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
-
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="form-outline mb-4">
-                            <label for="password_signup" class="fs-6 fw-normal">Set your password:</label>
-                            <input type="password"   id="password_signup" class="form-control form-control-lg " >
-                            
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
-    
-                    </div>
-                
-                   
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 ">
+                <span class="h2 fw-bold mb-0 ">Signup</span>
+            </div>
+            <h5 class=" fw-normal mb-2 pb-2 h5" style="letter-spacing: 1px;">Create an account</h5>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form-outline mb-4">
-                        <label for="address_signup" class="fs-6 fw-normal">Address:</label>
-                        <textarea   id="address_signup" class="form-control form-control-lg " rows=3 ></textarea>
-                        
-                    <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+                        <label for="username_signup" class="fs-6 fw-normal">Username:</label>
+                        <input type="text" id="username_signup" class="form-control form-control-lg " 
+                        [ngClass]="{ 'is-invalid': addUserForm.get('userName')?.touched && addUserForm.get('userName')?.invalid }"                           
+                            placeholder="Enter userName" formControlName="userName">
+                        <div class="invalid-feedback">
+                            <div *ngIf="addUserForm.get('userName')?.errors?.required">User Name is required</div>
+                            
+                        </div>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
 
                 </div>
-              </div>
-            
-                        
-              
-              <div class="pt-1 mb-4">
-                <button class="btn btn-dark btn-lg btn-block" type="button">Signup</button>
-              </div>              
-              <!-- <a class="small text-muted" routerLink="#!">Forgot password?</a> -->
-              <p class="mb-4 pb-lg-2" style="color: #393f81;">Already registered? <a routerLink="/login" style="color: #393f81;">Login here</a></p>
-            </form>
-    
-          </div>
-       
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-outline mb-4">
+                        <label for="email_signup" class="fs-6 fw-normal">Email:</label>
+                        <input type="email" id="email_signup" class="form-control form-control-lg"
+                            [ngClass]="{ 'is-invalid': addUserForm.get('userEmail')?.touched && addUserForm.get('userEmail')?.invalid }"
+                            placeholder="Enter Your Email" formControlName="userEmail">
+                        <div class="invalid-feedback">
+                            <div *ngIf="addUserForm.get('userEmail')?.errors?.required">Email is required</div>
+                            <div *ngIf="addUserForm.get('userEmail')?.errors?.email">Email seems to be not valid</div>
+                        </div>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 64px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-outline mb-4">
+                        <label for="firstname_signup" class="fs-6 fw-normal">First Name:</label>
+                        <input type="text" id="firstname_signup" class="form-control form-control-lg "
+                            [ngClass]="{ 'is-invalid': addUserForm.get('firstName')?.touched && addUserForm.get('firstName')?.invalid }"
+                            placeholder="Enter first Name" formControlName="firstName">
+                        <div class="invalid-feedback">
+                            <div>First Name is required</div>
+                        </div>
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-outline mb-4">
+                        <label for="lastname_signup" class="fs-6 fw-normal">Last Name:</label>
+                        <input type="text" id="lastname_signup" class="form-control form-control-lg "
+                            [ngClass]="{ 'is-invalid': addUserForm.get('lastName')?.touched && addUserForm.get('lastName')?.invalid }"
+                            placeholder="Enter last Name" formControlName="lastName">
+                        <div class="invalid-feedback">
+                            <div>Last Name is required</div>
+                        </div>
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-outline mb-4">
+                        <label for="phoneno_signup" class="fs-6 fw-normal">Phone.no:</label>
+                        <input type="tel" id="phoneno_signup" class="form-control form-control-lg "
+                            [ngClass]="{ 'is-invalid': addUserForm.get('userMobile')?.touched && addUserForm.get('userMobile')?.invalid }"
+                            placeholder="Enter Phone Number" formControlName="userMobile">
+                        <div class="invalid-feedback">
+                            <div>Phone is required</div>
+                        </div>
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-outline mb-4">
+                        <label for="password_signup" class="fs-6 fw-normal">Set your password:</label>
+                        <input type="password" id="password_signup" class="form-control form-control-lg "
+                            [ngClass]="{ 'is-invalid': addUserForm.get('userPassword')?.touched && addUserForm.get('userPassword')?.invalid }"
+                            placeholder="Enter Password" formControlName="userPassword">
+                        <div class="invalid-feedback">
+                            <div>Password is required</div>
+                        </div>
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 ">
+                    <div class="form-outline mb-4">
+                        <label for="address_signup" class="fs-6 fw-normal">Address:</label>
+                        <textarea id="address_signup" class="form-control form-control-lg "
+                            formControlName="userAddress" rows=3></textarea>
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="pt-1 mb-4">
+                <button class="btn btn-dark btn-lg btn-block" type="submit">Signup</button>
+            </div>
+            <!-- <a class="small text-muted" routerLink="#!">Forgot password?</a> -->
+            <p class="mb-4 pb-lg-2" style="color: #393f81;">Already registered? <a routerLink="/login"
+                    style="color: #393f81;">Login here</a></p>
+        </form>
+
+    </div>
+
 </section>
