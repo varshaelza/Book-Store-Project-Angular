@@ -40,4 +40,11 @@ export class BookDetailsComponent implements OnInit {
       console.log(res);
     })
   }
+
+  isAvailable(data: any): any {
+    if (data == 0) {
+      return true;
+    }
+    return false;
+  }
 }
