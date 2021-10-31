@@ -26,8 +26,8 @@ export class CartComponent implements OnInit {
         this.cartList = res;
         if(this.cartList.length==0){
           this.booksPresent=false;
-          this.cartCount = this.cartList.length;
         }
+        this.cartCount = this.cartList.length;
         for (var r of this.cartList) {
           this.bookService.getBookById(r.bookId).subscribe((book: any) => {
             var cartItem = this.cartList.find(p => p.bookId == book[0].bookId);

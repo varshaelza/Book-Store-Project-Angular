@@ -15,11 +15,14 @@ import { ManageDiscountsComponent } from './admin/components/manage-discounts/ma
 import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminAuthGuard } from './shared/guards/admin-auth.guard';
+import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component';
+import { AllBooksComponent } from './books/components/all-books/all-books.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'list-books/:p_catID',component:BookListComponent},
+  {path:'all-books', component:AllBooksComponent},
   {path:'book-details/:bookId',component:BookDetailsComponent},
   {path:'cart',component:CartComponent, canActivate:[AuthGuard]},
   {path:'checkout', component:CheckoutComponent, canActivate:[AuthGuard]},
@@ -29,6 +32,7 @@ const routes: Routes = [
   {path:'manage-categories',component:ManageCategoriesComponent, canActivate:[AdminAuthGuard]},
   {path:'manage-discounts',component:ManageDiscountsComponent, canActivate:[AdminAuthGuard]},
   {path:'manage-users',component:ManageUsersComponent, canActivate:[AdminAuthGuard]},
+  {path:'profile', component:ViewProfileComponent, canActivate:[AuthGuard]},
   {path:'',component:HomeComponent}
 ];
 

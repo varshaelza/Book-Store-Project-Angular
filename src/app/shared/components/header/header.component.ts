@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
       this.menuService.adminstatus.next(false);
     localStorage.removeItem('authToken');
   }
-
+  handleSearch(formData:any){
+    this.menuService.searchVal.next(formData.value.searchBox);
+  }
 
 }

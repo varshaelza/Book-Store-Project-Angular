@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
+  isLoggedIn = true;
+
 
   constructor(private authService:AuthService, private router:Router, private activeRoute:ActivatedRoute) { }
 
@@ -27,23 +29,13 @@ export class LoginComponent implements OnInit {
       console.log(res)
       
       if(res && res.userID){
-        alert("Login success");
         localStorage.setItem('authToken', res.userID);
         this.authService.adminstatus.next(res.isAdmin);
-        // if(res.userName=="admin"){
-        //   
-        //   console.log(res.isAdmin);
-        //   localStorage.setItem('adminStatus', "true");
-        // }else{
-        //   this.authService.adminstatus.next(res.isAdmin);
-        //   localStorage.setItem('adminStatus', "false");
-        // }
-        
         //read query parameter to now return url
-        
+        this.isLoggedIn = true;
         this.router.navigateByUrl(this.activeRoute.snapshot.queryParams['returnURL']);
       }else{
-        alert("Login Unsuccesfull!! Please check your username and password");
+        this.isLoggedIn = false;
         this.loginForm.setValue({username: '', password: ''});
       }
       

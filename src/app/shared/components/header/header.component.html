@@ -7,10 +7,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-      <form class="d-flex">
-        <input class="form-control me-2"  type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author"
-          aria-label="Search" #headersearch>
-        <button class="btn btn-outline-success" id="searchbutton" (click)="headersearch.value=''" type="submit">Clear</button>
+      <form class="d-flex" #f="ngForm" (ngSubmit)="handleSearch(f)">
+        <input class="form-control me-2"  type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="searchBox" placeholder="Search by Title or Author" 
+          aria-label="Search" ngModel>
+        <button class="btn btn-outline-success" id="searchbutton" type="submit" routerLink="/all-books">Search</button>
       </form>
       <app-menu>
         <div id="navbarSupportedContent">

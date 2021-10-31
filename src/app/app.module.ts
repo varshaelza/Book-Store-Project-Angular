@@ -22,6 +22,8 @@ import { ManageDiscountsComponent } from './admin/components/manage-discounts/ma
 import { ManageUsersComponent } from './admin/components/manage-users/manage-users.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component';
+import { AllBooksComponent } from './books/components/all-books/all-books.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     ManageDiscountsComponent,
     ManageUsersComponent,
     FilterPipe,
-    
+    ViewProfileComponent,
+    AllBooksComponent,
  
   ],
   imports: [

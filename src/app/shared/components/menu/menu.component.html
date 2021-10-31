@@ -9,6 +9,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/wishlist">Wishlist</a>
       </li>
+      <li *ngIf="loggedIn()" class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/profile">View Profile</a>
+      </li>
       <li *ngIf ="status" class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/manage-books">Manage Books</a>
       </li>

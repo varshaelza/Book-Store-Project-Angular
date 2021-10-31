@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class MenuService {
   currentUser: any;
   public adminstatus = new BehaviorSubject<boolean>(false);
+  public searchVal = new BehaviorSubject<string>('');
   constructor(private http: HttpClient) { }
 
 }
