@@ -69,6 +69,16 @@ export class CartComponent implements OnInit {
     console.log(books);
     this.getcartbyUserid();
     })
+ 
+  }
+
+  handleDelete(book:any)
+  {
+    this.cartitem=this.cartList.find((i:any)=>i.bookId===book.bookId) 
+    this.cartService.deleteBookfromCart(this.cartitem.cartId).subscribe((books: any) =>{
+      console.log(books);
+      this.getcartbyUserid();
+      })
   }
 }
 

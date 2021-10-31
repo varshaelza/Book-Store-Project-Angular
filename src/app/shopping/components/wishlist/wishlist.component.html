@@ -23,7 +23,7 @@
                                 <div class="row">{{book.author}}</div>
                             </div>
                             <div class="col">&#8377; {{book.bookPrice}} </div>
-                            <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;">DELETE</button></div>
+                            <div class="col"><button class="btn btn-dark" style="margin-bottom: 40px;" (click)="handleDelete(book)">DELETE</button></div>
                         </div>
                     </div>
                 </div>
