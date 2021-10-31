@@ -72,9 +72,10 @@
     <div  class="fs-1 text-center">
   <p style="font-style:italic;">Categories</p>
   </div>
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3 p-2  m-5">      
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3 p-2  m-5" >      
       <div class="col mb-5 ">
-        <div class="card shadow-sm" style="margin-bottom: 50px; border: solid; border-width: 3px;" *ngFor="let category of categoryList">
+        <div class="card shadow-sm" style="margin-bottom: 50px;" *ngFor="let category of categoryList" >
+          <div *ngIf="category.categoryStatus">
           <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{category.categoryImg}}" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-body text-center">
@@ -82,6 +83,7 @@
             <p class="card-text" style="font-size: large;">{{category.categoryDesc}}</p> 
             <button class="btn btn-primary" style="background-color: black; border-color: black;"><a style="text-decoration: none; color: aliceblue;" routerLink="/list-books/{{category.categoryId}}">View More</a></button>         
           </div>
+        </div>
         </div>
       </div>
     </div>
