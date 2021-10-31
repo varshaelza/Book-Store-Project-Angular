@@ -1,0 +1,63 @@
+<div class="container" style="margin-top: 80px;margin-bottom: 80px;">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4 *ngIf="isadmin"><b>My Orders</b></h4>
+                            <h4 *ngIf="!isadmin"><b>All Orders</b></h4>
+                        </div>
+                        <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
+                        
+                    </div>
+                </div>
+                <div class="row border-top" >
+                    <div class="row main align-items-center">
+                        <!-- <div class="col">
+                            < <div class="row fw-bold">Order ID</div> -->
+                            
+                        <!-- </div> --> 
+                       
+                        
+                        <div class="col fw-bold">Order ID</div>
+                        <div class="col fw-bold">Date</div>
+                        <div class="col fw-bold">Total Amount</div>
+                        <div class="col fw-bold"> </div>
+                               </div>
+                </div>
+                <div *ngIf="purchasesPresent; else elseBlock">
+                    <div class="row border-top" *ngFor="let order of orderList; index as i">
+                        <div class="row main align-items-center">
+                            
+                            <!-- <div class="col">
+                                <div class="row text-muted">{{order.orderId}}</div>
+                                
+                            </div> -->
+                            
+                            <div class="col">
+                                <div class="row text-muted">{{order.orderId}}</div>
+                                
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted">{{order.dateTimeOrder}}</div>
+                                
+                            </div>
+                           
+                            <div class="col">&#8377; {{order.totalAmt}} </div>
+                            <div class="col fw-bold"><button class="btn btn-dark"  style="margin-bottom: 40px; ">VIEW DETAILS</button></div>
+                                   </div>
+                    </div>
+                </div>
+
+                <ng-template #elseBlock>
+                    <h5 style="text-align: center;">No items found in Cart</h5>
+                </ng-template>
+                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="">&leftarrow;Back to shop</a></div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</div>

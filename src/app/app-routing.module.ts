@@ -17,7 +17,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminAuthGuard } from './shared/guards/admin-auth.guard';
 import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component';
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
-
+import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
@@ -33,6 +33,7 @@ const routes: Routes = [
   {path:'manage-discounts',component:ManageDiscountsComponent, canActivate:[AdminAuthGuard]},
   {path:'manage-users',component:ManageUsersComponent, canActivate:[AdminAuthGuard]},
   {path:'profile', component:ViewProfileComponent, canActivate:[AuthGuard]},
+  {path:'view-orders',component:ViewOrdersComponent,canActivate:[AuthGuard]},
   {path:'',component:HomeComponent}
 ];
 

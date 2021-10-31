@@ -24,6 +24,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component';
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
+import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 
 
 
@@ -49,7 +50,8 @@ import { AllBooksComponent } from './books/components/all-books/all-books.compon
     ManageUsersComponent,
     FilterPipe,
     ViewProfileComponent,
-    AllBooksComponent, 
+    AllBooksComponent,
+    ViewOrdersComponent, 
   ],
   imports: [
     BrowserModule,

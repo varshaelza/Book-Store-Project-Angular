@@ -9,20 +9,24 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/wishlist">Wishlist</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/view-orders">Orders</a>
+      </li>
+      
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-books"> Manage Books</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-categories"> Manage Categories</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-discounts"> Manage Discounts</a>
+      </li>
+      <li *ngIf ="status" class="nav-item">
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-users"> Manage Users</a>
+      </li>
       <li *ngIf="loggedIn()" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/profile">View Profile</a>
-      </li>
-      <li *ngIf ="status" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/manage-books">Manage Books</a>
-      </li>
-      <li *ngIf ="status" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/manage-categories">Manage Categories</a>
-      </li>
-      <li *ngIf ="status" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/manage-discounts">Manage Discounts</a>
-      </li>
-      <li *ngIf ="status" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/manage-users">Manage Users</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/profile">Profile</a>
       </li>
       <ng-content></ng-content>
   </ul>
