@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-confirmation',
@@ -9,13 +9,10 @@ import { Router } from '@angular/router';
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  gotopage(page:string)
-  {
-    this.router.navigate([`${page}`])
-  }
+  
 
 }
