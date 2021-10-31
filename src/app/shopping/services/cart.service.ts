@@ -89,6 +89,57 @@ deleteBookfromWishlist(wishId:any)
       console.log(res);
       return res;
     }));
-}
+  }
+
+  getOrderbyUserId(userId:any)
+  {
+    let orderUrl = `https://localhost:44346/api/Order?userId=${userId}`;
+    return this.http.get(orderUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
+  getOrders()
+  {
+    let orderUrl = 'https://localhost:44346/api/Order';
+    return this.http.get(orderUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
+  getPurchaseByOrderid(orderId:any)
+  {
+    let purchaseUrl = `https://localhost:44346/api/Purchases?p_orderId=${orderId}`;
+    return this.http.get(purchaseUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
+  getBookById(bookId:any){ 
+
+    console.log(bookId);
+    let bookIdURL = `https://localhost:44346/api/Books?p_bookID=${bookId}`;
+    return this.http.get(bookIdURL)
+      .pipe(map( (res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+  getDiscounts()
+  {
+    let discountUrl = `https://localhost:44346/api/Discount`;
+    return this.http.get(discountUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
   
 }

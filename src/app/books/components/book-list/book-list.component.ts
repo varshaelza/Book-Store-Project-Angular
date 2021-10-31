@@ -13,6 +13,8 @@ export class BookListComponent implements OnInit {
   bookList: any[] = [];
   availability = false;
   searchKey: string = "";
+  bookId: any;
+  booksPresent = true;
   constructor(private bookService: BooksService, private route: ActivatedRoute, private cartService: CartDataService) { }
 
   ngOnInit(): void {
@@ -27,7 +29,9 @@ export class BookListComponent implements OnInit {
             this.bookList.push(r)
           }
         }
-
+        if(this.bookList.length==0){
+          this.booksPresent=false;
+        }
         //this.bookList = res;
       });
 
@@ -44,6 +48,21 @@ export class BookListComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  handleAddToCart(book: any) {
+    this.bookId = book.bookId;
+    console.log(this.bookId);
+    this.bookService.addToCart(book).subscribe((res: any) => {
+      console.log(res);
+    })
+  }
+  handleAddToWishlist(book:any){
+    this.bookId = book.bookId;
+    console.log(this.bookId);
+    this.bookService.addToWishList(book).subscribe((res: any)=>{
+      console.log(res);
+    })
   }
 
 }
