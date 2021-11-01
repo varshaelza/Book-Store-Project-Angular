@@ -110,8 +110,8 @@ export class ViewOrdersComponent implements OnInit {
 
           getdetails(orderid:any,userid:any)
           {
-            this.cartdataService.orderid.next(orderid)
-            this.cartdataService.userid.next(userid);
+            localStorage.setItem('orderid', orderid);
+            localStorage.setItem('userid', userid);
             
           }
         }

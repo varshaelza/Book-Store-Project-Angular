@@ -1,5 +1,7 @@
-import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { BooksService } from 'src/app/books/services/books.service';
+import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { CartService } from 'src/app/shopping/services/cart.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class CartComponent implements OnInit {
   currentUser: any;
   totalPrice = 0;
   cartitem:any;
-  constructor(private cartService: CartService, private bookService: BooksService) { }
+  constructor(private route:Router,  private cartService: CartService,private cartdataService:CartDataService, private bookService: BooksService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
@@ -44,12 +46,23 @@ export class CartComponent implements OnInit {
           this.bookService.getBookById(r.bookId).subscribe((book: any) => {
             var cartItem = this.cartList.find(p => p.bookId == book[0].bookId);
             book[0].Qty = cartItem.bookQty;
+            
             this.totalPrice+=book[0].bookPrice*book[0].Qty;
+            
+            console.log(this.totalPrice)
+            
             this.bookList.push(book[0]);
           });
         }
-
+        console.log(this.totalPrice +"eyyyy" )    
+        
       });
+      
+  }
+  settotal(amt:any)
+  {
+    localStorage.setItem('checkoutAmt', amt);
+    this.route.navigateByUrl('/checkout')
   }
   handleQtyadd(book:any)
   {
