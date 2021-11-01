@@ -11,6 +11,20 @@
                         <div class="col align-self-center text-right text-muted"><button class=" btn btn-lg btn-dark" routerLink = "/" type="button" >ADD</button></div>
                     </div>
                 </div>
+                <div class="row border-top" >
+                    <div class="row main align-items-center">
+                        <!-- <div class="col">
+                            < <div class="row fw-bold">Order ID</div> -->
+                            
+                        <!-- </div> --> 
+                       
+                        
+                        <div class="col fw-bold" style="margin-left: 130px;">Book</div>
+                        <div class="col fw-bold">Quantity</div>
+                        <div class="col fw-bold">Price (Rs.)</div>
+                        <div class="col fw-bold"> </div>
+                               </div>
+                </div>
                 <div *ngIf="booksPresent; else elseBlock">
                     <div class="row border-top" *ngFor="let book of bookList; index as i">
                         <div class="row main align-items-center">

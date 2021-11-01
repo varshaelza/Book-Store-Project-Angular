@@ -12,6 +12,20 @@
                     
                     </div>
                 </div>
+                <div class="row border-top" >
+                    <div class="row main align-items-center">
+                        <!-- <div class="col">
+                            < <div class="row fw-bold">Order ID</div> -->
+                            
+                        <!-- </div> --> 
+                       
+                        
+                        <div class="col fw-bold col-md-3" style="margin-left: 130px;">Book</div>
+                        <div class="col-md-1 fw-bold"> </div>
+                        <div class="col fw-bold">Price (Rs.)</div>
+                        <div class="col fw-bold"> </div>
+                    </div>
+                </div>
                 <div *ngIf="booksPresent; else elseBlock">
                     <div class="row border-top" *ngFor="let book of bookList">
                         <div class="row main align-items-center">
