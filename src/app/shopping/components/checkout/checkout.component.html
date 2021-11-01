@@ -29,7 +29,7 @@
   
           <form class="card p-2" [formGroup]="couponRedeemForm" (ngSubmit)="handleCoupon()">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code" formControlName="couponCode">
+              <input type="text" class="form-control" placeholder="Coupon code" formControlName="couponCode">
               <button type="submit" class="btn btn-secondary">Redeem</button>
             </div>
             
@@ -115,9 +115,13 @@
               <input type="checkbox" class="form-check-input" id="same-address">
               <label class="form-check-label" for="same-address">Accept terms and conditions</label>
             </div>
-
-            <button class="w-100 btn btn-dark btn-lg" type="submit">Continue to checkout</button>
+            
+            <button class="w-100 btn btn-dark btn-lg" type="submit" (click)="handleCheckout()">Continue to checkout</button>
+            
           </form>
+          <div class="alert alert-danger mt-2" *ngIf="!orderplaced">
+            Unable to Place Order!Books no longer available.
+          </div>
         </div>
       </div>
     </main>

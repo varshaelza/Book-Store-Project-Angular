@@ -64,7 +64,7 @@
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
                     <div class="col text-right">&#8377; {{totalPrice}}</div>
-                </div> <button class="btn btn-dark"  (click)="settotal(totalPrice)">MAKE PAYMENT</button>
+                </div> <button class="btn btn-dark" [disabled]="totalPrice==0"  (click)="settotal(totalPrice)">MAKE PAYMENT</button>
             </div>
         </div>
     </div>

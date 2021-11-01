@@ -25,7 +25,9 @@ export class CheckoutComponent implements OnInit {
   discounts:any
   addressupdated:any
   validcoupon:any=true;
+  orderplaced:any
   disCouponsCnt: any;
+  cart:any
   orderObj:any={
     userId:JSON.parse(localStorage.getItem('authToken') || '{}'),
     couponId:0,
@@ -45,7 +47,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
    
-
+    this.orderplaced=true
     // console.log("dis------"+this.discountedprice)
     this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
     this.getUserbyId(); 
@@ -96,12 +98,30 @@ export class CheckoutComponent implements OnInit {
 
  
   handleCheckout():any{
+    console.log("reached function")
     console.log(this.orderObj);
     this.checkoutService.addOrder(this.orderObj)
     .subscribe((res:any)=>{
       console.log(res);
-      this.route.navigateByUrl('/confirm')
+      this.checkoutService.getCartbyUserId(this.orderObj.userId)
+    .subscribe((res:any)=>{
+      console.log(res)
+
+    if(res.length!=0)
+    {
+      console.log("reached")
+      this.orderplaced=false
+    }
+    if(this.orderplaced)
+    {
+     this.route.navigateByUrl('/confirm')
+    }
     });
+      
+    });
+    
+
+    console.log(this.orderplaced)
   }
 
 
