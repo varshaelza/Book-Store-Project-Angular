@@ -14,15 +14,16 @@ export class CheckoutComponent implements OnInit {
   currentUser: any;
   loggedInUser:any;
   newAddress:any;
-  //loggedIndefaultaddress:any;
-  discountObj:any;
-  discountId:any=6; //default discount Id of default coupon code
+  defaultcouponCode:any;  
+  defCouponobj:any; 
+  discountObj:any;  
   orderObj:any={
     userId:JSON.parse(localStorage.getItem('authToken') || '{}'),
-    couponId:this.discountId,
+    couponId:0,
     totalAmt:0,
     datetimeOrder:''
-  }
+  };
+
 
   constructor(private checkoutService: CartService, private activatedRoute: ActivatedRoute,private router: Router) { }
   
@@ -38,12 +39,22 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
-    this.getUserbyId();  
+    this.getUserbyId(); 
+    this.defaultcouponCode={couponCode:'BS000'}
+    this.getdefaultCouponId();
     
+  }
+  getdefaultCouponId():any{
+    this.checkoutService.getbyCouponCode(this.defaultcouponCode)
+     .subscribe((res:any)=>{
+       console.log(res);
+       this.defCouponobj=res;
+       this.orderObj.couponId=this.defCouponobj[0].couponId
+ 
+     });
   }
 
   handleCoupon():any{   
-    
     this.checkoutService.getbyCouponCode (this.couponRedeemForm.value)
      .subscribe((res:any)=>{
        console.log('after redeem');         
