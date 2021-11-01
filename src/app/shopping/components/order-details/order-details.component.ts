@@ -25,19 +25,20 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.purchaseList=[]
     this.orders=[]
-    this.cartdataservice.latestorderid
-    .subscribe((id)=>{
-      this.orderid=id;
-    });
-    
+    // this.cartdataservice.latestorderid
+    // .subscribe((id)=>{
+    //   this.orderid=id;
+    // });
+    this.orderid = JSON.parse(localStorage.getItem('orderid') || '{}');
+    this.userid = JSON.parse(localStorage.getItem('userid') || '{}');
   
 
 
 
-this.cartdataservice.latestuserid
-.subscribe((id)=>{
-  this.userid=id;
-});;
+// this.cartdataservice.latestuserid
+// .subscribe((id)=>{
+//   this.userid=id;
+// });;
 console.log(this.userid)
 
             

@@ -142,5 +142,15 @@ deleteBookfromWishlist(wishId:any)
     }));
   }
 
+  getApplicablediscounts(total:any)
+  {
+    let discountUrl = `https://localhost:44346/api/Discount?p_totpurchase=${total}`;
+    return this.http.get(discountUrl)
+    .pipe(map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
   
 }
