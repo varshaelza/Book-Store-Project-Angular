@@ -26,8 +26,11 @@
                 
               <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
     
-              <div class="alert alert-danger" *ngIf="!isLoggedIn">
+              <div class="alert alert-danger" *ngIf="!isLoggedIn&&isActive">
                 Login Unsuccessfull! Please check username and password
+              </div>
+              <div class="alert alert-danger" *ngIf="!isLoggedIn&&!isActive">
+                Login Unsuccessfull! Account Deactivated by admin
               </div>
 
               <div class="pt-1 mb-4">

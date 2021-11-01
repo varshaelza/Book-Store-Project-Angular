@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   });
 
   isLoggedIn = true;
-
+  isActive:any=true
 
   constructor(private authService:AuthService, private router:Router, private activeRoute:ActivatedRoute) { }
 
@@ -28,13 +28,21 @@ export class LoginComponent implements OnInit {
     this.authService.login(formData.value).subscribe((res:any)=>{ 
       console.log(res)
       
-      if(res && res.userID){
+      if(res&&res.isactive==false)
+      {
+        this.isActive=false
+        this.isLoggedIn = false;
+      }
+      else if(res && res.userID){
         localStorage.setItem('authToken', res.userID);
         this.authService.adminstatus.next(res.isAdmin);
         //read query parameter to now return url
         this.isLoggedIn = true;
         this.router.navigateByUrl(this.activeRoute.snapshot.queryParams['returnURL']);
-      }else{
+      }
+     
+      else{
+        
         this.isLoggedIn = false;
         this.loginForm.setValue({username: '', password: ''});
       }
