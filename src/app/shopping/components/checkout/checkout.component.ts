@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
   };
 
 
-  constructor(private checkoutService: CartService, private activatedRoute: ActivatedRoute,private router: Router) { }
+  constructor(private route:Router, private checkoutService: CartService, private activatedRoute: ActivatedRoute,private router: Router) { }
   
   updateAddressform = new FormGroup({
     userAddress : new FormControl('')
@@ -71,7 +71,7 @@ export class CheckoutComponent implements OnInit {
     this.checkoutService.addOrder(this.orderObj)
     .subscribe((res:any)=>{
       console.log(res);
-      alert('Thank you for shopping');
+      this.route.navigateByUrl('/confirm')
     });
   }
 
