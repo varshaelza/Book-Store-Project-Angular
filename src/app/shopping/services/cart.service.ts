@@ -113,6 +113,7 @@ deleteBookfromWishlist(wishId:any)
 
   getPurchaseByOrderid(orderId:any)
   {
+    console.log("reached")
     let purchaseUrl = `https://localhost:44346/api/Purchases?p_orderId=${orderId}`;
     return this.http.get(purchaseUrl)
     .pipe(map( (res: any) => {

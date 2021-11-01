@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/admin/services/admin.service';
 import { BooksService } from 'src/app/books/services/books.service';
+import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class ViewOrdersComponent implements OnInit {
   username:any
  
   
-  constructor(private cartService: CartService, private bookService: BooksService,private adminService:AdminService ){ }
+  constructor(private cartService: CartService, private bookService: BooksService,private adminService:AdminService, private cartdataService:CartDataService){ }
 
   ngOnInit(): void {
     this.allorders=[]
@@ -96,16 +97,23 @@ export class ViewOrdersComponent implements OnInit {
           
           }});}
 
-    getusername(id:any):string
-    {
-            this.adminService.getUsers()
-            .subscribe((res: any) => {
-            console.log(res);
-            this.username=(res.find((i:any)=>i.userID===id).userName)})
-            return this.username 
+    // getusername(id:any):string
+    // {
+    //         this.adminService.getUsers()
+    //         .subscribe((res: any) => {
+    //         console.log(res);
+    //         this.username=(res.find((i:any)=>i.userID===id).userName)})
+    //         return this.username 
             
-          } 
+    //       } 
           
+
+          getdetails(orderid:any,userid:any)
+          {
+            this.cartdataService.orderid.next(orderid)
+            this.cartdataService.userid.next(userid);
+            
+          }
         }
       
 // getpurchases()

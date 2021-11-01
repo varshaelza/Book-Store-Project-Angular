@@ -5,9 +5,10 @@
                 <div class="title">
                     <div class="row">
                         <div class="col">
-                            <h4 *ngIf="isadmin"><b>All Orders</b></h4>
-                            <h4 *ngIf="!isadmin"><b>My Orders</b></h4>
-                            <h6 *ngIf="isadmin"> Details of orders by all users.</h6>
+                            <h4><b>Order Details</b></h4>
+                            <h4><b>Order ID : {{orderid}}</b></h4>
+                            <h4><b>Buyer : {{username}}</b></h4>
+                            
                         </div>
                         <!--<div class="col align-self-center text-right text-muted">3 items</div>-->
                         
@@ -21,14 +22,16 @@
                         <!-- </div> --> 
                        
                         
-                        <div class="col fw-bold">Order ID</div>
-                        <div class="col fw-bold">Date</div>
-                        <div class="col fw-bold">Total Amount(after discount)</div>
-                        <div class="col fw-bold"> </div>
+                        <div class="col fw-bold">Book</div>
+                        <div class="col fw-bold">Author</div>
+                        <div class="col-2 fw-bold">Image</div>
+                        <div class="col fw-bold">Price</div>
+                        <div class="col fw-bold">Quantity</div>
+                        
                                </div>
                 </div>
-                <div *ngIf="purchasesPresent; else elseBlock">
-                    <div class="row border-top" *ngFor="let order of orderList; index as i">
+                <div>
+                    <div class="row border-top" *ngFor="let ord of orders" >
                         <div class="row main align-items-center">
                             
                             <!-- <div class="col">
@@ -37,28 +40,31 @@
                             </div> -->
                             
                             <div class="col">
-                                <div class="row text-muted">{{order.orderId}}</div>
+                                <div class="row text-muted">{{ord.title}}</div>
                                 
                             </div>
                             <div class="col">
-                                <div class="row text-muted">{{order.dateTimeOrder|date: 'dd/MM/yyyy hh:mm:ss'}}</div>
+                                <div class="row text-muted">{{ord.author}}</div>
+                                
+                            </div>
+                            <div class="col-2">
+                                <div class="row text-muted"><img  class="img-fluid " style="width:100px"src={{ord.image}}></div>
+                                
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted">&#8377;{{ord.price}}</div>
                                 
                             </div>
                            
-                            <div class="col">&#8377; {{order.totalAmt}} </div>
-                            <div class="col fw-bold"><button class="btn btn-dark"  style="margin-bottom: 40px; " type="button"routerLink="/order-details"(click)="getdetails(order.orderId,order.userId)">VIEW DETAILS</button></div>
+                            <div class="col">{{ord.qty}} </div>
+                           
                                    </div>
                     </div>
                 </div>
 
-                <ng-template #elseBlock>
-                    <h5 style="text-align: center;">No Orders Found</h5>
-                </ng-template>
-                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="/">&leftarrow;Back to shop</a></div>
+                
+                <div class="back-to-shop"><a style="text-decoration: none;" routerLink="/view-orders">&leftarrow;Back to Orders</a></div>
             </div>
             
         </div>
     </div>
-
-
-</div>

@@ -22,11 +22,13 @@ export class CartComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
 
     this.getcartbyUserid();
+    
 
   }
 
   getcartbyUserid()
   {
+
     this.cartList=[]
     this.bookList=[]
     this.totalPrice=0

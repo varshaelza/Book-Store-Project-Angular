@@ -25,6 +25,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component';
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
 import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
+import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
 
 
 
@@ -51,7 +52,8 @@ import { ViewOrdersComponent } from './shopping/components/view-orders/view-orde
     FilterPipe,
     ViewProfileComponent,
     AllBooksComponent,
-    ViewOrdersComponent, 
+    ViewOrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
