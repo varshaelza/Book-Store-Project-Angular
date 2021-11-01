@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.catService.getDetailsByCatID()
     .subscribe( (res: any) => {
       console.log(res);
-      this.categoryList = res;
+      this.categoryList = res.filter((p: any)=>p.categoryStatus==true);
     });
 
 

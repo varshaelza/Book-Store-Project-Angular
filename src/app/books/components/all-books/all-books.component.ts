@@ -11,6 +11,7 @@ export class AllBooksComponent implements OnInit {
   searchValue: any;
   bookList: any[] = [];
   bookId:any;
+  booksPresent=true;
   constructor(private menuService: MenuService, private bookService: BooksService) { }
 
   ngOnInit(): void {
@@ -18,7 +19,10 @@ export class AllBooksComponent implements OnInit {
       this.searchValue = res;
 
       this.bookService.getBooksByCatId(this.searchValue).subscribe((val:any)=>{
-        this.bookList = val;
+        this.bookList = val.filter((p: any)=>p.bookStatus==true);
+        if(this.bookList.length==0){
+          this.booksPresent=false;
+        }
       })
     });
 
