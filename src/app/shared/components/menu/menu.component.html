@@ -14,19 +14,19 @@
       </li>
       
       <li *ngIf ="status" class="nav-item">
-        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-books"> Manage Books</a>
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-books">Books</a>
       </li>
       <li *ngIf ="status" class="nav-item">
-        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-categories"> Manage Categories</a>
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-categories">Categories</a>
       </li>
       <li *ngIf ="status" class="nav-item">
-        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-discounts"> Manage Discounts</a>
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-discounts">Discounts</a>
       </li>
       <li *ngIf ="status" class="nav-item">
-        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-users"> Manage Users</a>
+        <a class="nav-link text-center" routerLinkActive="active" routerLink="/manage-users">Users</a>
       </li>
       <li *ngIf="loggedIn()" class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/profile">Profile</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/profile"> My Profile</a>
       </li>
       <ng-content></ng-content>
   </ul>

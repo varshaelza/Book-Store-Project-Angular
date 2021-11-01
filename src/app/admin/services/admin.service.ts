@@ -139,6 +139,15 @@ updateDiscount(formdata:any)
       }))
   }
 
+  getUserbyID(userid:any)
+  {
+    return this.http.get(`https://localhost:44346/Api/Users?p_userId=${userid}`)
+    .pipe( map((res:any)=>{
+      console.log(res);
+      return res;
+      }))
+  }
+
   editUser(user:any)
   {
     return this.http.put('https://localhost:44346/Api/Users',user)
