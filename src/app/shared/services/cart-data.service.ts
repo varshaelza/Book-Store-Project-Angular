@@ -17,5 +17,4 @@ export class CartDataService {
   latestuserid:Observable<any>=this.userid.asObservable()
   constructor() { }
 
-  
 }
