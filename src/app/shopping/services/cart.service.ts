@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CartService {
-  
-
+  currentUser: any;
+  cartObj: any;
   constructor(private http: HttpClient) { }
 
   getbyCouponCode(couponcode:any):any{
@@ -140,6 +140,20 @@ deleteBookfromWishlist(wishId:any)
       console.log(res);
       return res;
     }));
+  }
+
+  addToCart(book:any){
+    this.currentUser = JSON.parse(localStorage.getItem('authToken') || '{}');
+    var id: number = +this.currentUser;
+
+    this.cartObj = {"userId": this.currentUser, "bookId":book.bookId,"bookQty":1};
+
+    return this.http.post('https://localhost:44346/api/Cart',this.cartObj)
+    .pipe(map((res: any)=>{
+      console.log(res);
+      return res;
+    }));
+    
   }
 
   

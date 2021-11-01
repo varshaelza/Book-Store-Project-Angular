@@ -13,6 +13,7 @@ export class WishlistComponent implements OnInit {
   bookList: any[] = [];
   booksPresent: any = true;
   wishitem:any;
+  bookId: any;
 
   constructor(private cartService: CartService, private bookService: BooksService) { }
 
@@ -50,6 +51,14 @@ export class WishlistComponent implements OnInit {
       console.log(books);
       this.getwishbyUserid();
       })
+  }
+
+  handleAddToCart(book: any){
+    this.bookId = book.bookId;
+    console.log(this.bookId);
+    this.cartService.addToCart(book).subscribe((res: any)=>{
+      console.log(res);
+    })
   }
 
 }
