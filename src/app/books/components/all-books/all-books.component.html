@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <div class="album py-5 bg-light mt-5">
   <div class="container ">
-    <div *ngIf="booksPresent; else elseBlock">
+    <div *ngIf="bookList.length; else elseBlock">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <ng-container *ngFor="let book of bookList">
           <div class="col">

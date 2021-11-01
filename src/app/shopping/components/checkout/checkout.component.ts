@@ -25,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   discounts:any
   addressupdated:any
   validcoupon:any=true;
+  disCouponsCnt: any;
   orderObj:any={
     userId:JSON.parse(localStorage.getItem('authToken') || '{}'),
     couponId:0,
@@ -58,7 +59,9 @@ export class CheckoutComponent implements OnInit {
     this.checkoutService.getApplicablediscounts(this.totalAmount)
     .subscribe((res:any)=>{
       console.log(res);
-      this.discounts=res})
+      this.discounts=res;
+      this.disCouponsCnt = this.discounts.length;
+    })
     
   }
   getdefaultCouponId():any{

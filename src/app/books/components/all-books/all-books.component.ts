@@ -20,9 +20,6 @@ export class AllBooksComponent implements OnInit {
 
       this.bookService.getBooksByCatId(this.searchValue).subscribe((val:any)=>{
         this.bookList = val.filter((p: any)=>p.bookStatus==true);
-        if(this.bookList.length==0){
-          this.booksPresent=false;
-        }
       })
     });
 
