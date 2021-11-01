@@ -14,6 +14,7 @@ export class BookListComponent implements OnInit {
   availability = false;
   searchKey: string = "";
   bookId: any;
+  booksPresent = true;
   constructor(private bookService: BooksService, private route: ActivatedRoute, private cartService: CartDataService) { }
 
   ngOnInit(): void {
@@ -28,7 +29,9 @@ export class BookListComponent implements OnInit {
             this.bookList.push(r)
           }
         }
-
+        if(this.bookList.length==0){
+          this.booksPresent=false;
+        }
         //this.bookList = res;
       });
 
