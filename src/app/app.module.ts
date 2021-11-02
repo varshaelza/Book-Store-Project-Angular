@@ -27,6 +27,7 @@ import { AllBooksComponent } from './books/components/all-books/all-books.compon
 import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
 import { FeaturedBooksComponent } from './books/components/featured-books/featured-books.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 
 
@@ -55,7 +56,8 @@ import { FeaturedBooksComponent } from './books/components/featured-books/featur
     AllBooksComponent,
     ViewOrdersComponent,
     OrderDetailsComponent,
-    FeaturedBooksComponent
+    FeaturedBooksComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

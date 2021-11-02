@@ -20,6 +20,7 @@ import { AllBooksComponent } from './books/components/all-books/all-books.compon
 import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
 import { FeaturedBooksComponent } from './books/components/featured-books/featured-books.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path:'profile', component:ViewProfileComponent, canActivate:[AuthGuard]},
   {path:'view-orders',component:ViewOrdersComponent,canActivate:[AuthGuard]},
   {path:'order-details',component:OrderDetailsComponent,canActivate:[AuthGuard]},
-  {path:'',component:HomeComponent}
+  {path:'',component:HomeComponent},
+  {path:'**', component:PageNotFoundComponent},
 ];
 
 @NgModule({
