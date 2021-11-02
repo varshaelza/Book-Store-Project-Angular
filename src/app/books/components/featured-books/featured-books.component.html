@@ -1,0 +1,45 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+<div class="album py-5 bg-light mt-5">
+<h2 style="text-align: center; margin-bottom: 30px;">Top 6 Featured Books</h2>
+  <div class="container ">
+    <div *ngIf="bookList.length; else elseBlock">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <ng-container *ngFor="let book of bookList">
+          <div class="col">
+            <div class="card shadow-sm">
+
+              <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="{{book.bookImage}}"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h4 class="card-text">{{book.title}}</h4> <span style="float: right;">Quantity :
+                  {{book.availableQty}}</span>
+                <p>Author : {{book.author}}</p>
+                <h5>Price : &#8377;{{book.bookPrice}} </h5>
+                <div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col"><button style="float: left;" routerLink="/book-details/{{book.bookId}}"
+                          type="button" class="btn btn-lg  btn-outline-secondary" title="View details">View</button>
+                      </div>
+                      <div class="col"><button routerLink="/cart" type="button" style="width: 140px;"
+                          class="btn btn-lg  btn-outline-secondary" [disabled]="isAvailable(book.availableQty)"
+                          title="Add to cart" (click)="handleAddToCart(book)">Add to cart</button></div>
+                      <div class="col"><button routerLink="/wishlist" class="btn btn-lg  btn-outline-secondary"
+                          type="button" (click)="handleAddToWishlist(book)"><span class="fa fa-heart"
+                            title="Add to wishlist"></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <h4 style="text-align: center;">No featured books</h4>
+    </ng-template>
+
+  </div>
+</div>

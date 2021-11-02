@@ -26,6 +26,7 @@ import { ViewProfileComponent } from './profile/components/view-profile/view-pro
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
 import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
+import { FeaturedBooksComponent } from './books/components/featured-books/featured-books.component';
 
 
 
@@ -53,7 +54,8 @@ import { OrderDetailsComponent } from './shopping/components/order-details/order
     ViewProfileComponent,
     AllBooksComponent,
     ViewOrdersComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    FeaturedBooksComponent
   ],
   imports: [
     BrowserModule,

@@ -19,11 +19,13 @@ import { ViewProfileComponent } from './profile/components/view-profile/view-pro
 import { AllBooksComponent } from './books/components/all-books/all-books.component';
 import { ViewOrdersComponent } from './shopping/components/view-orders/view-orders.component';
 import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
+import { FeaturedBooksComponent } from './books/components/featured-books/featured-books.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'list-books/:p_catID',component:BookListComponent},
   {path:'all-books', component:AllBooksComponent},
+  {path: 'featured-books', component: FeaturedBooksComponent},
   {path:'book-details/:bookId',component:BookDetailsComponent},
   {path:'cart',component:CartComponent, canActivate:[AuthGuard]},
   {path:'checkout', component:CheckoutComponent, canActivate:[AuthGuard]},
