@@ -4,13 +4,13 @@
 <div class="container mt-5 emp-profile">
     <div class="card" style="padding: 50px;box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 20px;">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="profile-img">
                     <img src="assets\images\profile-default.png" style="height: 180px;"
                         alt="" />                    
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="profile-head">
                     <h5>
                         {{userDetails.firstName}} {{userDetails.lastName}}
@@ -32,10 +32,66 @@
         data-bs-toggle="modal" data-bs-target="#editUserModal" (click)="handleEditModalOpen()">Edit Profile</button>
                
             </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-dark" 
+        data-bs-toggle="modal" data-bs-target="#updatepasswordModal" (click)="handlepwdModalOpen()">Reset Password</button>
+               
+            </div>
         </div>
 
 
-        <!-- Modal -->
+<!-- Reset Password Modal -->
+
+
+        <div class="modal fade" id="updatepasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" *ngIf="dupUserData">
+                    <form ngNativeValidate (ngSubmit)="handleUpdatePwd()">
+                        <div class="form-group row mb-3">
+                            <label for="pwd1" class="col-sm-5 col-form-label">Enter new Password</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" 
+                                    [(ngModel)]="password1" name="pwd1" required>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="pwd2" class="col-sm-5 col-form-label">Enter new Password</label>
+                            <div class="col-sm-7">
+                                <input type="password" class="form-control" 
+                                    [(ngModel)]="password2" name="pwd2" required>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success" *ngIf="pwdChanged">
+                            Updated successfully!
+                        </div>
+                        <div class="alert alert-danger" *ngIf="pwddiff">
+                            Entries mismatched!
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+        <!-- Modal  Update-->
         <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -105,7 +161,7 @@
         <!----->
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="profile-work">
                     <p>User since 12th Oct, 2019</p>
                 </div>
@@ -114,25 +170,25 @@
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>User Name</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <p>{{userDetails.userName}}</p>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>First Name</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <p>{{userDetails.firstName}}</p>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>Last Name</label>
                             </div>
                             <div class="col-md-6">
@@ -141,7 +197,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
@@ -150,19 +206,19 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>Phone</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <p>{{userDetails.userMobile}}</p>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label>Address</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <p>{{userDetails.userAddress}}</p>
                             </div>
                         </div>

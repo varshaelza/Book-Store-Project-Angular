@@ -1,3 +1,4 @@
+import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
 
@@ -14,6 +15,10 @@ export class ViewProfileComponent implements OnInit {
   isadmin=false;
   isUpdated = false;
   newList: any[] =[];
+  pwddiff:any=false;
+  pwdChanged:any=false;
+  password1:any
+  password2:any
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
@@ -34,7 +39,36 @@ export class ViewProfileComponent implements OnInit {
   handleEditModalOpen(): void{
     this.dupUserData = { ...this.userDetails  }; 
   }
+  handlepwdModalOpen():void{
+    this.dupUserData = { ...this.userDetails  }; 
+    this.pwdChanged=false;
+    this.pwddiff=false;
+  }
 
+  handleUpdatePwd()
+  {
+    if(this.password1==this.password2)
+    {
+      this.dupUserData.userPassword=this.password1;
+      this.profileService.updateUser(this.dupUserData)
+      .subscribe( (res: any) => {
+        console.log(res);
+        this.newList = res;
+        var currUser= this.newList.find(p=>p.userID == this.userDetails.userID);
+        console.log(currUser);
+        if(currUser && currUser.userID){
+          console.log(1);
+          this.isUpdated = true;
+          this.userDetails = currUser;
+        }
+      });
+      this.pwdChanged=true;
+    }
+    else
+    {
+      this.pwddiff=true;
+    }
+  }
   handleUpdateUser(): void{
     console.log(this.dupUserData); // submittable formdata
 
